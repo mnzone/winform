@@ -1,0 +1,2 @@
+E:\vs\ticketClient\Ticket\IPlugin\bin\Release\IPlugin.dll
+E:\vs\ticketClient\Ticket\IPlugin\obj\Release\IPlugin.dll

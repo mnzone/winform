@@ -1,0 +1,13 @@
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\bin\Debug\MemberCard.exe.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\bin\Debug\MemberCard.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\bin\Debug\MemberCard.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Properties.Resources.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.csproj.GenerateResource.Cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmAdd.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmManager.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmView.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmCharge.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmRecharge.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.csprojResolveAssemblyReference.cache

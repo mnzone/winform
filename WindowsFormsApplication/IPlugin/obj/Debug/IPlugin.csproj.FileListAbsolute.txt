@@ -1,0 +1,16 @@
+E:\vs\ticketClient\Ticket\IPlugin\bin\Debug\IPlugin.dll
+E:\vs\ticketClient\Ticket\IPlugin\bin\Debug\IPlugin.pdb
+E:\vs\ticketClient\Ticket\Loader\bin\Debug\IPlugin.dll
+E:\vs\ticketClient\Ticket\Loader\bin\Debug\IPlugin.pdb
+E:\vs\ticketClient\Ticket\IPlugin\obj\Debug\IPlugin.dll
+E:\vs\ticketClient\Ticket\IPlugin\obj\Debug\IPlugin.pdb
+H:\vs\TicketClient\TicketClient\Loader\bin\Debug\IPlugin.dll
+H:\vs\TicketClient\TicketClient\Loader\bin\Debug\IPlugin.pdb
+H:\vs\TicketClient\TicketClient\IPlugin\obj\Debug\IPlugin.dll
+H:\vs\TicketClient\TicketClient\IPlugin\obj\Debug\IPlugin.pdb
+H:\vs\TicketClient\TicketClient\IPlugin\obj\Debug\IPlugin.csprojResolveAssemblyReference.cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\obj\Debug\IPlugin.csprojResolveAssemblyReference.cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\obj\Debug\IPlugin.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\obj\Debug\IPlugin.pdb

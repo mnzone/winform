@@ -1,0 +1,12 @@
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\GoodsManager.exe.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\GoodsManager.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\GoodsManager.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Manager.FrmAdd.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Manager.FrmManager.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Manager.FrmView.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Properties.Resources.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Trade.FrmList.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Trade.FrmSale.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.csproj.GenerateResource.Cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.pdb

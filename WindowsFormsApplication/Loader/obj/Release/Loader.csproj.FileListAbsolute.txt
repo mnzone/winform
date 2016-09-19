@@ -1,0 +1,14 @@
+E:\vs\ticketClient\Ticket\Loader\bin\Release\Loader.exe.config
+E:\vs\ticketClient\Ticket\Loader\bin\Release\Loader.exe
+E:\vs\ticketClient\Ticket\Loader\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\vs\ticketClient\Ticket\Loader\bin\Release\IPlugin.dll
+E:\vs\ticketClient\Ticket\Loader\bin\Release\IrisSkin4.dll
+E:\vs\ticketClient\Ticket\Loader\bin\Release\log4net.dll
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.csprojResolveAssemblyReference.cache
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.FrmLoader.resources
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.FrmUpdate.resources
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.Properties.Resources.resources
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.csproj.GenerateResource.Cache
+E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.exe
+H:\vs\ticketClient.bak\Ticket\Loader\bin\Release\Loader.exe.config
+H:\vs\ticketClient.bak\Ticket\Loader\obj\Release\Loader.exe

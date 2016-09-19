@@ -1,0 +1,16 @@
+E:\vs\ticketClient\Ticket\Update\bin\Release\Update.dll.config
+E:\vs\ticketClient\Ticket\Update\bin\Release\Update.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\IPlugin.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\IrisSkin4.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\Newtonsoft.Json.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\Tools.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\log4net.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\System.Data.SQLite.dll
+E:\vs\ticketClient\Ticket\Update\bin\Release\Newtonsoft.Json.xml
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.csprojResolveAssemblyReference.cache
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.FrmCheckUpdate.resources
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.FrmMain.resources
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.Properties.Resources.resources
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.csproj.GenerateResource.Cache
+E:\vs\ticketClient\Ticket\Update\obj\Release\Update.dll

@@ -1,0 +1,8 @@
+E:\vs\ticketClient\Ticket\Tools\bin\Release\Tools.dll
+E:\vs\ticketClient\Ticket\Tools\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\vs\ticketClient\Ticket\Tools\bin\Release\log4net.dll
+E:\vs\ticketClient\Ticket\Tools\bin\Release\Newtonsoft.Json.dll
+E:\vs\ticketClient\Ticket\Tools\bin\Release\System.Data.SQLite.dll
+E:\vs\ticketClient\Ticket\Tools\bin\Release\Newtonsoft.Json.xml
+E:\vs\ticketClient\Ticket\Tools\obj\Release\Tools.dll
+E:\vs\ticketClient\Ticket\Tools\obj\Release\Tools.csprojResolveAssemblyReference.cache
