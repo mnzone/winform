@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FC2814E-EC2D-4BF7-AEDB-9141FC01E4E0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Loader</RootNamespace>
+    <AssemblyName>Loader</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>libs\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin4, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=0ed4c5f2bbf81ac0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\IrisSkin4.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AppConfigHelper.cs" />
+    <Compile Include="Common\ZipHelper.cs" />
+    <Compile Include="FrmLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoader.Designer.cs">
+      <DependentUpon>FrmLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdate.Designer.cs">
+      <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgramInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\UpdateInfo.cs" />
+    <Compile Include="ViewModel\UpdateItem.cs" />
+    <EmbeddedResource Include="FrmLoader.resx">
+      <DependentUpon>FrmLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdate.resx">
+      <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Assets\Skins\Calmness.ssk" />
+    <None Include="Assets\Skins\CalmnessColor1.ssk" />
+    <None Include="Assets\Skins\CalmnessColor2.ssk" />
+    <None Include="Assets\Skins\DeepCyan.ssk" />
+    <None Include="Assets\Skins\DeepGreen.ssk" />
+    <None Include="Assets\Skins\DeepOrange.ssk" />
+    <None Include="Assets\Skins\DiamondBlue.ssk" />
+    <None Include="Assets\Skins\DiamondGreen.ssk" />
+    <None Include="Assets\Skins\DiamondOlive.ssk" />
+    <None Include="Assets\Skins\DiamondPurple.ssk" />
+    <None Include="Assets\Skins\DiamondRed.ssk" />
+    <None Include="Assets\Skins\Eighteen.ssk" />
+    <None Include="Assets\Skins\EighteenColor1.ssk" />
+    <None Include="Assets\Skins\EighteenColor2.ssk" />
+    <None Include="Assets\Skins\Emerald.ssk" />
+    <None Include="Assets\Skins\EmeraldColor1.ssk" />
+    <None Include="Assets\Skins\EmeraldColor2.ssk" />
+    <None Include="Assets\Skins\EmeraldColor3.ssk" />
+    <None Include="Assets\Skins\GlassBrown.ssk" />
+    <None Include="Assets\Skins\GlassGreen.ssk" />
+    <None Include="Assets\Skins\GlassOrange.ssk" />
+    <None Include="Assets\Skins\Longhorn.ssk" />
+    <None Include="Assets\Skins\MacOS.ssk" />
+    <None Include="Assets\Skins\Midsummer.ssk" />
+    <None Include="Assets\Skins\MidsummerColor1.ssk" />
+    <None Include="Assets\Skins\MidsummerColor2.ssk" />
+    <None Include="Assets\Skins\MidsummerColor3.ssk" />
+    <None Include="Assets\Skins\mp10.ssk" />
+    <None Include="Assets\Skins\mp10green.ssk" />
+    <None Include="Assets\Skins\mp10maroon.ssk" />
+    <None Include="Assets\Skins\mp10mulberry.ssk" />
+    <None Include="Assets\Skins\mp10pink.ssk" />
+    <None Include="Assets\Skins\mp10purple.ssk" />
+    <None Include="Assets\Skins\MSN.ssk" />
+    <None Include="Assets\Skins\office2007.ssk" />
+    <None Include="Assets\Skins\OneBlue.ssk" />
+    <None Include="Assets\Skins\OneCyan.ssk" />
+    <None Include="Assets\Skins\OneGreen.ssk" />
+    <None Include="Assets\Skins\OneOrange.ssk" />
+    <None Include="Assets\Skins\Page.ssk" />
+    <None Include="Assets\Skins\PageColor1.ssk" />
+    <None Include="Assets\Skins\PageColor2.ssk" />
+    <None Include="Assets\Skins\RealOne.ssk" />
+    <None Include="Assets\Skins\Silver.ssk" />
+    <None Include="Assets\Skins\SilverColor1.ssk" />
+    <None Include="Assets\Skins\SilverColor2.ssk" />
+    <None Include="Assets\Skins\SportsBlack.ssk" />
+    <None Include="Assets\Skins\SportsBlue.ssk" />
+    <None Include="Assets\Skins\SportsCyan.ssk" />
+    <None Include="Assets\Skins\SportsGreen.ssk" />
+    <None Include="Assets\Skins\SportsOrange.ssk" />
+    <None Include="Assets\Skins\SteelBlack.ssk" />
+    <None Include="Assets\Skins\SteelBlue.ssk" />
+    <None Include="Assets\Skins\vista1.ssk" />
+    <None Include="Assets\Skins\vista1_green.ssk" />
+    <None Include="Assets\Skins\Vista2_color1.ssk" />
+    <None Include="Assets\Skins\Vista2_color2.ssk" />
+    <None Include="Assets\Skins\Vista2_color3.ssk" />
+    <None Include="Assets\Skins\Vista2_color4.ssk" />
+    <None Include="Assets\Skins\Vista2_color5.ssk" />
+    <None Include="Assets\Skins\Vista2_color6.ssk" />
+    <None Include="Assets\Skins\Vista2_color7.ssk" />
+    <None Include="Assets\Skins\Warm.ssk" />
+    <None Include="Assets\Skins\WarmColor1.ssk" />
+    <None Include="Assets\Skins\WarmColor2.ssk" />
+    <None Include="Assets\Skins\WarmColor3.ssk" />
+    <None Include="Assets\Skins\Wave.ssk" />
+    <None Include="Assets\Skins\WaveColor1.ssk" />
+    <None Include="Assets\Skins\WaveColor2.ssk" />
+    <None Include="Assets\Skins\XPBlue.ssk" />
+    <None Include="Assets\Skins\XPGreen.ssk" />
+    <None Include="Assets\Skins\XPOrange.ssk" />
+    <None Include="Assets\Skins\XPSilver.ssk" />
+    <None Include="log4net.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IPlugin\IPlugin.csproj">
+      <Project>{e001578b-3598-4be5-aafd-1364d5f74d41}</Project>
+      <Name>IPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Icon\icon_1.ico" />
+    <Content Include="Assets\Icon\icon_2.ico" />
+    <Content Include="Assets\Icon\icon_3.ico" />
+    <Content Include="Assets\Icon\icon_4.ico" />
+    <Content Include="Assets\Icon\icon_5.ico" />
+    <Content Include="Assets\Icon\icon_6.ico" />
+    <Content Include="Assets\Image\avatar.jpg" />
+    <Content Include="Assets\Image\loader_bg.jpg" />
+    <Content Include="Assets\Image\login_top.jpg" />
+    <Content Include="Assets\Png\add-card.png" />
+    <Content Include="Assets\Png\book.png" />
+    <Content Include="Assets\Png\general-options.png" />
+    <Content Include="Assets\Png\help.png" />
+    <Content Include="Assets\Png\publish.png" />
+    <Content Include="icon_1.ico" />
+    <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="libs\IrisSkin4.dll" />
+    <Content Include="libs\log4net.dll" />
+    <Content Include="libs\System.Data.SQLite.dll" />
+    <Content Include="libs\Webkit\WebKit.dll" />
+    <Content Include="libs\Webkit\WebKit.Interop.dll" />
+    <Content Include="libs\Webkit\WebKitBrowser.dll" />
+    <Content Include="Script\setup.iss" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
