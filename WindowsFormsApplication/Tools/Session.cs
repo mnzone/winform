@@ -1,9 +1,5 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tools
 {
@@ -19,7 +15,7 @@ namespace Tools
     }
 
     public class LogTool {
-        private static ILog log = null;
+        /*private static ILog log = null;
 
         public static void SetInfoLog(String msg, Exception e) {
             log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Namespace.ToString());
@@ -94,7 +90,7 @@ namespace Tools
 
         public static void SetDebugLog(String msg) {
             SetDebugLog(msg, null);
-        }
+        }*/
     }
 
     public class Session

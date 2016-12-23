@@ -1,38 +1,74 @@
 ﻿using IPlugin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
-using Update.Common;
-using Update.Models;
 
 namespace Update
 {
     public partial class FrmCheckUpdate : Form, IForm
     {
-
-        public delegate void UpdateCallback();
-
+        private delegate void ChangeTipText(String text);
+        
         private bool connectFlag = false;
         private int count = 1;
-        private String text = "CheckUpdate的内容是";
         private Boolean isOver;
-        public UpdateCallback LoaderDelegate;
+        private CheckSoft check;
 
         public FrmCheckUpdate()
         {
             InitializeComponent();
-            this.timerUpdate.Enabled = true;
-            this.setLabel("正在解压");
-            //checkSoft();
+            CheckForIllegalCrossThreadCalls = false;
         }
 
-        public void Start() {
+        private void FrmCheckUpdate_Load(object sender, EventArgs e)
+        {
+            Thread checkThread = new Thread(begin);
+            checkThread.Start();
+
+        }
+
+        private void begin()
+        {
+            this.setLabel("请稍等...");
+
+            this.check = new CheckSoft();
+            this.check.Callback = this.updatingCallback;
+            this.check.CheckUpdate(1);
+        }
+
+        private void updatingCallback(String msg, int status)
+        {
+            this.setLabel(msg);
+
+            if (status == -1)
+            {
+                return;
+            }
+
+            if (status > 0)
+            {
+                this.Hide();
+                MessageBox.Show("软件已经是最新版本!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+
+            if (status == 0)
+            {
+                Application.Exit();
+            }
+        }
+
+        /// <summary>
+        /// 设置显示状态信息
+        /// </summary>
+        /// <param name="text">状态信息</param>
+        private void setLabel(String text) {
+            this.labStatus.Text = text;
+            this.labStatus.Left = (this.Width - this.labStatus.Width) / 2;
+        }
+
+        public void Start()
+        {
             this.Show();
         }
 
@@ -48,31 +84,7 @@ namespace Update
 
         public String GetProcessText()
         {
-            return text;
-        }
-
-        private void FrmCheckUpdate_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void timerUpdate_Tick(object sender, EventArgs e)
-        {
-            count++;
-            if(count > 3){
-                count = 1;
-            }
-            String dot = "";
-            for (int i = 0; i < count; i ++ ) {
-                dot += ".";
-            }
-            this.setLabel(this.text + dot);
-        }
-
-        private void setLabel(String text) {
-            this.text = text;
-            this.labStatus.Text = text;
-            this.labStatus.Left = (this.Width - this.labStatus.Width) / 2;
+            return this.labStatus.Text.Trim();
         }
     }
 }

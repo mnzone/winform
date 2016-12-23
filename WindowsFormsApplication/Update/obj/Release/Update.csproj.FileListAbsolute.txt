@@ -14,3 +14,11 @@ E:\vs\ticketClient\Ticket\Update\obj\Release\Update.FrmMain.resources
 E:\vs\ticketClient\Ticket\Update\obj\Release\Update.Properties.Resources.resources
 E:\vs\ticketClient\Ticket\Update\obj\Release\Update.csproj.GenerateResource.Cache
 E:\vs\ticketClient\Ticket\Update\obj\Release\Update.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Update.dll.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Update.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.csprojResolveAssemblyReference.cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.FrmCheckUpdate.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.FrmMain.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.Properties.Resources.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.csproj.GenerateResource.Cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Update\obj\Release\Update.dll

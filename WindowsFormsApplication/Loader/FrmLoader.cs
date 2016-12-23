@@ -1,19 +1,11 @@
-﻿using IPlugin;
-using Loader.Common;
-using Sunisoft.IrisSkin;
+﻿using Sunisoft.IrisSkin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tools;
 
 namespace Loader
 {
@@ -60,6 +52,11 @@ namespace Loader
 
         private SkinEngine skin = null;
 
+        private String SoftID = ConfigurationManager.AppSettings["SoftID"].ToString();
+        private String AppID = ConfigurationManager.AppSettings["AppID"].ToString();
+        private String AppSecret = ConfigurationManager.AppSettings["AppSecret"].ToString();
+        private String GUID = ConfigurationManager.AppSettings["GUID"].ToString();
+
 
         public FrmLoader()
         {
@@ -86,20 +83,51 @@ namespace Loader
 
         private void FrmLoader_Load(object sender, EventArgs e)
         {
+            loadINI();
             AnimateWindow(this.Handle, 1000, AW_BLEND | AW_ACTIVATE);
             
-            this.module = AppConfigHelper.GetAppSettingsValue("Module");
-            this.main = AppConfigHelper.GetAppSettingsValue("Main");
+            this.module = Common.AppConfigHelper.GetAppSettingsValue("Module");
+            this.main = Common.AppConfigHelper.GetAppSettingsValue("Main");
 
             //获取所有DLL信息
             GetDllVersion();
             //检查更新
+
+#if DEBUG
+            
+            LoadLogin();
+            this.Hide();
+#else
             LoadUpdate();
+#endif
             //执行更新操作
             //进入系统
             //LoadUpdate();
             //
             //LoadLogin();
+        }
+
+        private void loadINI()
+        {
+            IniFile iniFile = new IniFile(String.Format("{0}/application.cache", Application.StartupPath));
+            String expired = iniFile.IniReadValue("AccessToken", "expired");
+            if (String.IsNullOrEmpty(expired)
+                || Convert.ToInt64(expired) < TimeStamp.GetNowTimeStamp())
+            {
+                String token = GetAccessToken(AppID, AppSecret);
+                iniFile.IniWriteValue("AccessToken", "token", token);
+                iniFile.IniWriteValue("AccessToken", "expired", TimeStamp.GetNowTimeStamp().ToString());
+                return;
+            }
+
+        }
+
+        public static String GetAccessToken(String appId, String appSecret)
+        {
+            String md5Value = String.Format("{0}@{1}.{2}", appId, appSecret, TimeStamp.GetNowTimeStamp());
+
+            md5Value = Encryption.MD5(md5Value);
+            return Encryption.SHA1(md5Value);
         }
 
         /// <summary>
@@ -158,8 +186,18 @@ namespace Loader
             //获取方法
             MethodInfo main = type.GetMethod("Load");
             //实例化对象
-            Object obj = Activator.CreateInstance(type);
-            main.Invoke(obj, null);
+            Object obj = null;
+            try
+            {
+                obj = Activator.CreateInstance(type);
+                main.Invoke(obj, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return;
+            }
+            
             
             //开始查下一个操作
             this.currentForm = type;
@@ -190,7 +228,7 @@ namespace Loader
                 timerCheck.Stop();
                 if (this.currentForm.Name == "CheckSoft")
                 {
-                    bool updateFlag = Convert.ToBoolean(AppConfigHelper.GetAppSettingsValue("UpdateFlag"));
+                    bool updateFlag = Convert.ToBoolean(Common.AppConfigHelper.GetAppSettingsValue("UpdateFlag"));
                     if (updateFlag) {
                         UpdateSoft();
                     }else{

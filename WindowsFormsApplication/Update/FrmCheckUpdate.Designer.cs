@@ -28,23 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.labStatus = new System.Windows.Forms.Label();
-            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // labStatus
             // 
             this.labStatus.AutoSize = true;
-            this.labStatus.Location = new System.Drawing.Point(94, 42);
+            this.labStatus.Location = new System.Drawing.Point(94, 35);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(95, 12);
             this.labStatus.TabIndex = 0;
             this.labStatus.Text = "正在检查更新...";
-            // 
-            // timerUpdate
-            // 
-            this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
             // 
             // FrmCheckUpdate
             // 
@@ -66,6 +60,5 @@
         #endregion
 
         private System.Windows.Forms.Label labStatus;
-        private System.Windows.Forms.Timer timerUpdate;
     }
 }

@@ -33,7 +33,7 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Loader.pd
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\ICSharpCode.SharpZipLib.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IrisSkin4.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\log4net.dll
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\MySql.Data.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.csprojResolveAssemblyReference.cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.FrmLoader.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.FrmUpdate.resources

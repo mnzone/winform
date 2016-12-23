@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Update.Models
 {
@@ -14,7 +11,7 @@ namespace Update.Models
         public Soft(JObject json) {
             this.id = Convert.ToInt32(json["id"].ToString());
             this.build = Convert.ToInt64(json["build"].ToString());
-            this.desc = json["desc"].ToString();
+            this.desc = json["summary"].ToString();
             this.name = json["name"].ToString();
             this.version = json["version"].ToString();
             this.createdAt = this.ConvertIntDateTime(Convert.ToInt64(json["created_at"].ToString()));

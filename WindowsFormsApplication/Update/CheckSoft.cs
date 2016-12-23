@@ -1,11 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Configuration;
 using System.Windows.Forms;
 using Tools;
 using Update.Common;
@@ -15,26 +9,41 @@ namespace Update
 {
     public class CheckSoft
     {
-        private String text;
-        private Boolean overFlag;
+        private UpdatedCallback callback;
+
+        public UpdatedCallback Callback
+        {
+            get
+            {
+                return callback;
+            }
+
+            set
+            {
+                callback = value;
+            }
+        }
 
         public void CheckUpdate(long build)
         {
+            String softID = ConfigurationManager.AppSettings["SoftID"];
+            IniFile file = new IniFile(String.Format("{0}/application.cache", Application.StartupPath));
+
             Soft soft = null;
             try {
-                text = "正在连接服务器...";
-                soft = NetApi.GetSoft(2);
+                Callback?.Invoke("正在连接服务器...", -1);
+                soft = NetApi.GetSoft(Convert.ToInt32(softID), file.IniReadValue("AccessToken", "token"));
             } catch (System.Net.WebException ex) {
-                text = "获取数据时发生异常:" + ex.Message;
-            }
-
-            if(soft == null || soft.Build <= build){
-                text = "未找到相关数据";
-                overFlag = true;
+                Callback?.Invoke("获取数据时发生异常:" + ex.Message, 1);
                 return;
             }
 
-            text = "发现新版本!";
+            if(soft == null || soft.Build <= build){
+                Callback?.Invoke("未发现新版本", 0);
+                return;
+            }
+            
+            Callback?.Invoke("发现新版本!", -1);
             Tools.AppConfigHelper.RootPath = Application.ExecutablePath;
             Tools.AppConfigHelper.SetAppSettingsValue("UpdateFlag", "true");
             Tools.AppConfigHelper.SetAppSettingsValue("Ver", soft.Version);
@@ -42,17 +51,9 @@ namespace Update
             Tools.AppConfigHelper.SetAppSettingsValue("UpdatePackagePassword", soft.Packages[0].Password);
 
             String host = AppConfigHelper.GetAppSettingsValue("domain");
-            String url = String.Format("{0}/api/product/service/download_package/{1}?access_token=123", host, soft.Packages[0].Id);
-            text = "正在下载更新包...";
+            String url = String.Format("{0}/api/product/download/{1}?access_token={2}", host, soft.Packages[0].Id, file.IniReadValue("AccessToken", "token"));
+            Callback?.Invoke("正在下载更新包...", -1);
             DownloadFile(url, soft.Packages[0].Name + ".zip", null);
-        }
-
-        public Boolean IsOver() {
-            return overFlag;
-        }
-
-        public String GetText() {
-            return this.text;
         }
 
         /// <summary>        
@@ -91,7 +92,7 @@ namespace Update
                     osize = st.Read(by, 0, (int)by.Length);
 
                     percent = (float)totalDownloadedByte / (float)totalBytes * 100;
-                    text = "当前补丁下载进度" + percent.ToString() + "%";
+                    Callback?.Invoke("当前补丁下载进度" + percent.ToString() + "%", -1);
                     System.Windows.Forms.Application.DoEvents(); //必须加注这句代码，否则text将因为循环执行太快而来不及显示信息
                 }
                 so.Close();
@@ -99,11 +100,9 @@ namespace Update
             }
             catch (System.Exception e)
             {
-                overFlag = true;
-                Console.WriteLine("下载失败：" + e.Message);
+                Callback?.Invoke("下载失败：" + e.Message, 10);
             }
-            text = "更新包下载完成，请重启软件进行更新。";
-            overFlag = true;
+            Callback?.Invoke("更新包下载完成，请重启软件进行更新。", 0);
         }
     }
 }

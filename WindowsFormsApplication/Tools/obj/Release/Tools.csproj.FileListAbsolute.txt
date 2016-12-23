@@ -6,3 +6,7 @@ E:\vs\ticketClient\Ticket\Tools\bin\Release\System.Data.SQLite.dll
 E:\vs\ticketClient\Ticket\Tools\bin\Release\Newtonsoft.Json.xml
 E:\vs\ticketClient\Ticket\Tools\obj\Release\Tools.dll
 E:\vs\ticketClient\Ticket\Tools\obj\Release\Tools.csprojResolveAssemblyReference.cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Tools.dll.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Tools.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Tools\obj\Release\Tools.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Tools\obj\Release\Tools.csprojResolveAssemblyReference.cache

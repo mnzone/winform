@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Update.Models
 {
@@ -13,13 +9,13 @@ namespace Update.Models
 
         public SoftPackage(JObject json) {
             this.id = Convert.ToInt32(json["id"]);
-            this.name = json["name"].ToString();
-            this.path = json["path"].ToString();
-            this.soft_id = Convert.ToInt32(json["soft_id"]);
+            this.name = json["title"].ToString();
+            this.path = json["package_url"].ToString();
+            this.soft_id = Convert.ToInt32(json["product_id"]);
             this.summary = json["summary"].ToString();
             this.version = json["version"].ToString();
             this.password = json["password"].ToString();
-            this.buid = Convert.ToInt64(json["build"]);
+            this.build = Convert.ToInt64(json["build"]);
             this.createdAt = this.ConvertIntDateTime(Convert.ToInt64(json["created_at"].ToString()));
             this.updatedAt = this.ConvertIntDateTime(Convert.ToInt64(json["updated_at"].ToString()));
         }
@@ -80,12 +76,12 @@ namespace Update.Models
             get { return summary; }
             set { summary = value; }
         }
-        private long buid;
+        private long build;
 
-        public long Buid
+        public long Build
         {
-            get { return buid; }
-            set { buid = value; }
+            get { return build; }
+            set { build = value; }
         }
         private DateTime createdAt;
 

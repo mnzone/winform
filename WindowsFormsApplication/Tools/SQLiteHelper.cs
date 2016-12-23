@@ -7,11 +7,11 @@
 using System;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Collections;
 using System.Data.SQLite;
 
-namespace Tools {
+namespace Tools
+{
 
     /// <summary>
     /// The SqlHelper class is intended to encapsulate high performance, 
@@ -20,7 +20,7 @@ namespace Tools {
     public abstract class SQLiteHelper {
 
         //Database connection strings
-        public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+        public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.ConnectionStrings["SQLiteConnString"].ConnectionString;
         //public static readonly string ConnectionStringInventoryDistributedTransaction = ConfigurationManager.ConnectionStrings["SQLConnString2"].ConnectionString;
         //public static readonly string ConnectionStringOrderDistributedTransaction = ConfigurationManager.ConnectionStrings["SQLConnString3"].ConnectionString;
         //public static readonly string ConnectionStringProfile = ConfigurationManager.ConnectionStrings["SQLProfileConnString"].ConnectionString;		

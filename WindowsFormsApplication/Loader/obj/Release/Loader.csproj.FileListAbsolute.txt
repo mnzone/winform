@@ -12,3 +12,15 @@ E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.csproj.GenerateResource.Cach
 E:\vs\ticketClient\Ticket\Loader\obj\Release\Loader.exe
 H:\vs\ticketClient.bak\Ticket\Loader\bin\Release\Loader.exe.config
 H:\vs\ticketClient.bak\Ticket\Loader\obj\Release\Loader.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Loader.exe.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Loader.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\IrisSkin4.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\log4net.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\MySql.Data.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.csprojResolveAssemblyReference.cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.FrmLoader.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.FrmUpdate.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.Properties.Resources.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.csproj.GenerateResource.Cache
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.exe
