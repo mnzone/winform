@@ -56,6 +56,10 @@
     <Compile Include="SaleLogDAL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DALMySql\DALMySql.csproj">
+      <Project>{4C0367E9-87CB-4698-AA7D-72E832CE894C}</Project>
+      <Name>DALMySql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IDAL\IDAL.csproj">
       <Project>{D0CA70C1-2B22-4302-B457-F75AC5A14C54}</Project>
       <Name>IDAL</Name>

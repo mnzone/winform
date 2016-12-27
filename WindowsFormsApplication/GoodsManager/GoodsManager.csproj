@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -117,7 +118,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DelegateLibrary\DelegateLibrary.csproj">
+      <Project>{ccfdbecb-9852-4fbc-9985-d9a4a407f449}</Project>
+      <Name>DelegateLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryImpl\FactoryImpl.csproj">
+      <Project>{c2e76802-6dd1-4184-9609-079db75b5559}</Project>
+      <Name>FactoryImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBLL\IBLL.csproj">
+      <Project>{4DF7A116-2A04-442A-8D5A-DE99C96FE2C7}</Project>
+      <Name>IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{BBC3BD6C-6848-4042-AC08-0F3266EEED75}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{53093F21-4C2C-4A10-B309-EC2744AAD71B}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

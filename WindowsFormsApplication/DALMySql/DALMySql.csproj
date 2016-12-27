@@ -45,6 +45,7 @@
     <Compile Include="GoodsCategoryDAL.cs" />
     <Compile Include="GoodsDAL.cs" />
     <Compile Include="MemberCardCategoryDAL.cs" />
+    <Compile Include="MemberCardCategoryValueDAL.cs" />
     <Compile Include="MemberCardDAL.cs" />
     <Compile Include="MemberCardRecordDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

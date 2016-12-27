@@ -10,6 +10,8 @@
 
         IMemberCardCategoryDAL CreateMemberCardCategoryInstance();
 
+        IMemberCardCategoryValueDAL CreateMemberCardCategoryValueInstance();
+
         IReportDAL CreateReportInstance();
 
         IGoodsCategoryDAL CreateGoodsCategoryInstance();

@@ -24,6 +24,11 @@ namespace DALSQLite
             throw new System.NotImplementedException();
         }
 
+        public IMemberCardCategoryValueDAL CreateMemberCardCategoryValueInstance()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IReportDAL CreateReportInstance()
         {
             throw new System.NotImplementedException();

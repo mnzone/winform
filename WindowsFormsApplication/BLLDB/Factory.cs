@@ -24,7 +24,7 @@ namespace BLLDB
 
         public IMemberCardCategoryValueBLL CreateMemberCardCategoryValueInstance()
         {
-            throw new NotImplementedException();
+            return new MemberCardCategoryValueBLL(this.StartupPath);
         }
 
         public IMemberCardBLL CreateMemberCardInstance()

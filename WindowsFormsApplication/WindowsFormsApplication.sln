@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossManager", "BossManager\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALSQLite", "DALSQLite\DALSQLite.csproj", "{F54B49FC-A55A-4930-B0B6-A237140F9219}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateLibrary", "DelegateLibrary\DelegateLibrary.csproj", "{CCFDBECB-9852-4FBC-9985-D9A4A407F449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryImpl", "FactoryImpl\FactoryImpl.csproj", "{C2E76802-6DD1-4184-9609-079DB75B5559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{F54B49FC-A55A-4930-B0B6-A237140F9219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54B49FC-A55A-4930-B0B6-A237140F9219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54B49FC-A55A-4930-B0B6-A237140F9219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFDBECB-9852-4FBC-9985-D9A4A407F449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFDBECB-9852-4FBC-9985-D9A4A407F449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFDBECB-9852-4FBC-9985-D9A4A407F449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFDBECB-9852-4FBC-9985-D9A4A407F449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E76802-6DD1-4184-9609-079DB75B5559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E76802-6DD1-4184-9609-079DB75B5559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E76802-6DD1-4184-9609-079DB75B5559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E76802-6DD1-4184-9609-079DB75B5559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

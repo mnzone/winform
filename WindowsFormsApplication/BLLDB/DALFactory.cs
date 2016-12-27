@@ -53,5 +53,10 @@ namespace BLLDB
             IFactory factory = ReflectionTools.GetConstructor(StartupPath, DALPath, String.Format("{0}.Factory", DALPath)) as IFactory;
             return factory;
         }
+
+        public static IMemberCardCategoryValueDAL CreateMemberCardCategoryValueInstance()
+        {
+            return GetDALFactory().CreateMemberCardCategoryValueInstance();
+        }
     }
 }

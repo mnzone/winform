@@ -28,6 +28,11 @@ namespace DALMySql
             return new MemberCardCategoryDAL();
         }
 
+        public IMemberCardCategoryValueDAL CreateMemberCardCategoryValueInstance()
+        {
+            return new MemberCardCategoryValueDAL();
+        }
+
         public IReportDAL CreateReportInstance()
         {
             return new ReportDAL();

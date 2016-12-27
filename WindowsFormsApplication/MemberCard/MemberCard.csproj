@@ -153,6 +153,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DelegateLibrary\DelegateLibrary.csproj">
+      <Project>{CCFDBECB-9852-4FBC-9985-D9A4A407F449}</Project>
+      <Name>DelegateLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FactoryImpl\FactoryImpl.csproj">
+      <Project>{C2E76802-6DD1-4184-9609-079DB75B5559}</Project>
+      <Name>FactoryImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoodsManager\GoodsManager.csproj">
+      <Project>{8F2CB269-9EEE-443C-B16B-2F621DA48967}</Project>
+      <Name>GoodsManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IBLL\IBLL.csproj">
       <Project>{4df7a116-2a04-442a-8d5a-de99c96fe2c7}</Project>
       <Name>IBLL</Name>

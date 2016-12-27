@@ -11,6 +11,7 @@ using MemberCard.Common;
 using MemberCard.Trade;
 using Models;
 using Tools;
+using GoodsManager.Trade;
 
 namespace MemberCard
 {
@@ -107,6 +108,7 @@ namespace MemberCard
             this.txtKeyword.Enabled = false;
 
             this.cardNo = this.txtKeyword.Text.Trim();
+            this.txtKeyword.Clear();
 
             this.FindMemberCard(this.cardNo);
 
@@ -129,6 +131,10 @@ namespace MemberCard
 
         private void btnGoods_Click(object sender, EventArgs e)
         {
+            FrmSale sale = new FrmSale();
+            sale.Callback = AddRecordToDataGridView;
+            sale.Goods = (sender as Button).Tag as Goods;
+            sale.ShowDialog();
             //FrmSale sale = new FrmSale(this, (sender as Button).Text, ((sender as Button).Tag as Models.Goods).Id);
             //sale.ShowDialog();
         }
@@ -367,13 +373,15 @@ namespace MemberCard
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (pageIndex + 1 >= this.goodses.Count % pageSize)
+            int size = Convert.ToInt32(this.goodses.Count / pageSize);
+
+            if (pageIndex >= size)
             {
                 MessageBox.Show("已经是最后一页了", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            pageIndex++;
 
+            pageIndex++;
             reloadGoods(pageIndex * pageSize);
         }
 
@@ -386,6 +394,11 @@ namespace MemberCard
             }
             pageIndex--;
             reloadGoods(pageIndex * pageSize);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            this.txtKeyword.Focus();
         }
     }
 }
