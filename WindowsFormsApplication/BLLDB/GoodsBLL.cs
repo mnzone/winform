@@ -67,7 +67,7 @@ namespace BLLDB
                 },
             };
 
-            return dal.findByWhere(parameters);
+            return dal.findByWhere("visibile = @visibile AND is_deleted = @is_deleted", parameters);
         }
 
         public Goods GetGoodsById(int id)

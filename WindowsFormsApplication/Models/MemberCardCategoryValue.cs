@@ -11,6 +11,7 @@ namespace Models
         private Decimal money;
         private int valueNum;
         private int vaildValue;
+        private int goodsId;
         private ValidUnit validUnit;
         private int createdAt;
         private int updatedAt;
@@ -143,6 +144,19 @@ namespace Models
             set
             {
                 updatedAt = value;
+            }
+        }
+
+        public int GoodsId
+        {
+            get
+            {
+                return goodsId;
+            }
+
+            set
+            {
+                goodsId = value;
             }
         }
     }

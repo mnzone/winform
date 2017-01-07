@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labNo = new System.Windows.Forms.Label();
-            this.labCategory = new System.Windows.Forms.Label();
-            this.labBalance = new System.Windows.Forms.Label();
             this.labExpirt = new System.Windows.Forms.Label();
+            this.labBalance = new System.Windows.Forms.Label();
+            this.labCategory = new System.Windows.Forms.Label();
+            this.labNo = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRecovery = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,42 +61,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "会员卡信息";
             // 
-            // groupBox2
+            // labExpirt
             // 
-            this.groupBox2.Controls.Add(this.btnRecovery);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 210);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(332, 51);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
+            this.labExpirt.AutoSize = true;
+            this.labExpirt.Location = new System.Drawing.Point(125, 161);
+            this.labExpirt.Name = "labExpirt";
+            this.labExpirt.Size = new System.Drawing.Size(41, 12);
+            this.labExpirt.TabIndex = 7;
+            this.labExpirt.Text = "请刷卡";
             // 
-            // label1
+            // labBalance
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "会员卡号：";
+            this.labBalance.AutoSize = true;
+            this.labBalance.Location = new System.Drawing.Point(125, 122);
+            this.labBalance.Name = "labBalance";
+            this.labBalance.Size = new System.Drawing.Size(41, 12);
+            this.labBalance.TabIndex = 6;
+            this.labBalance.Text = "请刷卡";
             // 
-            // label2
+            // labCategory
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "卡片类型：";
+            this.labCategory.AutoSize = true;
+            this.labCategory.Location = new System.Drawing.Point(125, 83);
+            this.labCategory.Name = "labCategory";
+            this.labCategory.Size = new System.Drawing.Size(41, 12);
+            this.labCategory.TabIndex = 5;
+            this.labCategory.Text = "请刷卡";
             // 
-            // label3
+            // labNo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "帐户余额：";
+            this.labNo.AutoSize = true;
+            this.labNo.Location = new System.Drawing.Point(125, 41);
+            this.labNo.Name = "labNo";
+            this.labNo.Size = new System.Drawing.Size(41, 12);
+            this.labNo.TabIndex = 4;
+            this.labNo.Text = "请刷卡";
             // 
             // label4
             // 
@@ -107,41 +106,42 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "有 效 期：";
             // 
-            // labNo
+            // label3
             // 
-            this.labNo.AutoSize = true;
-            this.labNo.Location = new System.Drawing.Point(125, 41);
-            this.labNo.Name = "labNo";
-            this.labNo.Size = new System.Drawing.Size(59, 12);
-            this.labNo.TabIndex = 4;
-            this.labNo.Text = "加载中...";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "帐户余额：";
             // 
-            // labCategory
+            // label2
             // 
-            this.labCategory.AutoSize = true;
-            this.labCategory.Location = new System.Drawing.Point(125, 83);
-            this.labCategory.Name = "labCategory";
-            this.labCategory.Size = new System.Drawing.Size(59, 12);
-            this.labCategory.TabIndex = 5;
-            this.labCategory.Text = "加载中...";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "卡片类型：";
             // 
-            // labBalance
+            // label1
             // 
-            this.labBalance.AutoSize = true;
-            this.labBalance.Location = new System.Drawing.Point(125, 122);
-            this.labBalance.Name = "labBalance";
-            this.labBalance.Size = new System.Drawing.Size(59, 12);
-            this.labBalance.TabIndex = 6;
-            this.labBalance.Text = "加载中...";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "会员卡号：";
             // 
-            // labExpirt
+            // groupBox2
             // 
-            this.labExpirt.AutoSize = true;
-            this.labExpirt.Location = new System.Drawing.Point(125, 161);
-            this.labExpirt.Name = "labExpirt";
-            this.labExpirt.Size = new System.Drawing.Size(59, 12);
-            this.labExpirt.TabIndex = 7;
-            this.labExpirt.Text = "加载中...";
+            this.groupBox2.Controls.Add(this.btnRecovery);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 210);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(332, 51);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
             // 
             // btnRecovery
             // 
@@ -160,10 +160,12 @@
             this.ClientSize = new System.Drawing.Size(332, 261);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmRecovery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "会员卡回收";
             this.Load += new System.EventHandler(this.FrmRecovery_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmRecovery_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

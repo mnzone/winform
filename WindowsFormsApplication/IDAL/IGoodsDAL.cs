@@ -19,7 +19,7 @@ namespace IDAL
 
         List<Goods> findByWhere(String where);
 
-        List<Goods> findByWhere(DbParameter[] where);
+        List<Goods> findByWhere(String where, DbParameter[] whereParameters);
 
     }
 }

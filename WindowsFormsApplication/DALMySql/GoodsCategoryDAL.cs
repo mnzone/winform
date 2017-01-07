@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace DALMySql
 {
-    public class GoodsCategoryDAL : IGoodsCategoryDAL
+    public class GoodsCategoryDAL : BaseDAL, IGoodsCategoryDAL
     {
         public int save(GoodsCategory model)
         {
@@ -26,13 +26,20 @@ namespace DALMySql
 
         public GoodsCategory find(int id)
         {
-            throw new System.NotImplementedException();
+            GoodsCategory category = null;
+            String sql = String.Format("SELECT * FROM goods_categories WHERE id = {0}", id);
+            using (MySqlDataReader rdr = Tools.MySqlHelper.ExecuteReader(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql))
+            {
+                category = fillGoodsCategory(rdr);
+            }
+
+            return category;
         }
 
         public List<GoodsCategory> findAll()
         {
             List<GoodsCategory> list = null;
-            String sql = "SELECT * FROM goods_category";
+            String sql = "SELECT * FROM goods_categories";
             using (MySqlDataReader rdr = Tools.MySqlHelper.ExecuteReader(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql))
             {
                 while (true)
@@ -57,7 +64,28 @@ namespace DALMySql
 
         public List<GoodsCategory> findByWhere(string @where)
         {
-            throw new System.NotImplementedException();
+            List<GoodsCategory> list = null;
+            String sql = String.Format("SELECT * FROM goods_categories WHERE {0} ORDER BY id DESC", where);
+            using (MySqlDataReader rdr = Tools.MySqlHelper.ExecuteReader(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql))
+            {
+                while (true)
+                {
+                    if (list == null)
+                    {
+                        list = new List<GoodsCategory>();
+                    }
+
+                    GoodsCategory category = fillGoodsCategory(rdr);
+                    if (category == null)
+                    {
+                        break;
+                    }
+                    list.Add(category);
+                }
+
+            }
+
+            return list;
         }
 
         private GoodsCategory fillGoodsCategory(MySqlDataReader rdr)

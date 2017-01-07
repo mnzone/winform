@@ -85,8 +85,21 @@ namespace Models
             }
         }
 
-        private int visibile;
+        public GoodsCategory Category
+        {
+            get
+            {
+                return category;
+            }
 
+            set
+            {
+                category = value;
+            }
+        }
+
+        private int visibile;
+        private GoodsCategory category;
         private int createdAt;
         private int updatedAt;
         private int isDeleted;

@@ -1,17 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Linq;
 using IDAL;
 using Models;
 using MySql.Data.MySqlClient;
 
 namespace DALMySql
 {
-    public class MemberCardCategoryDAL : IMemberCardCategoryDAL
+    public class MemberCardCategoryDAL : BaseDAL, IMemberCardCategoryDAL
     {
         public int save(MemberCardCategory model)
         {
-            throw new System.NotImplementedException();
+            List<MySqlParameter> parameters = this.fillParameters(model);
+            parameters.Add(new MySqlParameter("@id", MySqlDbType.Int32, 11)
+            {
+                Value = model.Id
+            });
+
+            MySqlParameter[] param = this.ConvertMySqlParameters(parameters);
+            String sql = "INSERT INTO members_cards(card_no, category_id, created_at) values(@card_no, @category_id, @created_at);";
+            return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
         }
 
         public int delete(int id)
@@ -21,7 +31,15 @@ namespace DALMySql
 
         public int update(MemberCardCategory model)
         {
-            throw new System.NotImplementedException();
+            List<MySqlParameter> parameters = this.fillParameters(model);
+            parameters.Add(new MySqlParameter("@id", MySqlDbType.Int32, 11)
+            {
+                Value = model.Id
+            });
+
+            MySqlParameter[] param = this.ConvertMySqlParameters(parameters);
+            String sql = "UPDATE members_cards SET card_no = @card_no, category_id = @category_id, updated_at = @updated_at WHERE id = @id;";
+            return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
         }
 
         public MemberCardCategory find(int id)
@@ -46,6 +64,11 @@ namespace DALMySql
             throw new System.NotImplementedException();
         }
 
+        public List<MemberCardCategory> findByWhere(string @where, DbParameter[] whereParameters)
+        {
+            throw new NotImplementedException();
+        }
+
         private MemberCardCategory fillMemberCardCategory(MySqlDataReader rdr)
         {
             MemberCardCategory category = null;
@@ -60,6 +83,25 @@ namespace DALMySql
                 category.UpdatedAt = rdr["updated_at"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["updated_at"]);
             }
             return category;
+        }
+
+        private List<MySqlParameter> fillParameters(MemberCardCategory model)
+        {
+            MySqlParameter[] parameters = {
+                new MySqlParameter("@name", MySqlDbType.VarChar, 11),
+                new MySqlParameter("@begin_at", MySqlDbType.String, 10),
+                new MySqlParameter("@end_at", MySqlDbType.String, 11),
+                new MySqlParameter("@created_at", MySqlDbType.Int32, 11),
+                new MySqlParameter("@updated_at", MySqlDbType.Int32, 11),
+            };
+
+            parameters[0].Value = model.Name;
+            parameters[1].Value = model.BeginAt;
+            parameters[2].Value = model.EndAt;
+            parameters[3].Value = model.CreatedAt;
+            parameters[4].Value = model.UpdatedAt;
+
+            return parameters.ToList();
         }
     }
 }

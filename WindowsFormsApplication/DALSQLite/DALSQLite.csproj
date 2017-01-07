@@ -51,8 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDAL.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="GoodsCategoryDAL.cs" />
+    <Compile Include="GoodsDAL.cs" />
+    <Compile Include="MemberCardCategoryDAL.cs" />
+    <Compile Include="MemberCardCategoryValueDAL.cs" />
+    <Compile Include="MemberCardDAL.cs" />
+    <Compile Include="MemberCardRecordDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDAL.cs" />
     <Compile Include="SaleLogDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using IDAL;
 using Models;
 using MySql.Data.MySqlClient;
 
 namespace DALMySql
 {
-    public class SaleLogDAL : ISaleLogDAL
+    public class SaleLogDAL : BaseDAL, ISaleLogDAL
     {
         public int save(SaleLog model)
         {
             model.CreatedAt = Tools.TimeStamp.ConvertDateTimeInt(DateTime.Now);
-            MySqlParameter[] param = this.fillParameters(model);
+            MySqlParameter[] param = this.ConvertMySqlParameters(this.fillParameters(model));
             String sql = "INSERT INTO sales_records(goods_id, money, summary, created_at, updated_at) VALUES(@goods_id, @money, @summary, @created_at, @updated_at);";
             return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
         }
@@ -32,7 +33,7 @@ namespace DALMySql
         public int update(SaleLog model)
         {
             model.UpdatedAt = Tools.TimeStamp.ConvertDateTimeInt(DateTime.Now);
-            MySqlParameter[] param = this.fillParameters(model);
+            MySqlParameter[] param = this.ConvertMySqlParameters(this.fillParameters(model));
             param[param.Length] = new MySqlParameter("@id", MySqlDbType.Int32, 11);
 
             String sql = "UPDATE sales_records SET goods_id = @goods_id, money = @money, summary = @summary, created_at = @created_at, updated_at = @updated_at SET id = @id;";
@@ -97,7 +98,7 @@ namespace DALMySql
             return category;
         }
 
-        private MySqlParameter[] fillParameters(SaleLog model)
+        private List<MySqlParameter> fillParameters(SaleLog model)
         {
             MySqlParameter[] parameters = {
                 new MySqlParameter("@goods_id", MySqlDbType.Int32, 11),
@@ -113,7 +114,7 @@ namespace DALMySql
             parameters[3].Value = model.CreatedAt;
             parameters[4].Value = model.UpdatedAt;
 
-            return parameters;
+            return parameters.ToList();
         }
     }
 }

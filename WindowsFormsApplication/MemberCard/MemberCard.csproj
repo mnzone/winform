@@ -41,6 +41,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Loader\libs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -62,6 +66,18 @@
     <Compile Include="Card\FrmManager.Designer.cs">
       <DependentUpon>FrmManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Card\FrmPostponed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Card\FrmPostponed.Designer.cs">
+      <DependentUpon>FrmPostponed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Card\FrmRecovery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Card\FrmRecovery.Designer.cs">
+      <DependentUpon>FrmRecovery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card\FrmView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +86,15 @@
     </Compile>
     <Compile Include="Common\BLLLoader.cs" />
     <Compile Include="Common\FileTools.cs" />
+    <Compile Include="FrmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.Designer.cs">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,12 +110,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="ProgramInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Trade\FrmDelay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trade\FrmDelay.Designer.cs">
-      <DependentUpon>FrmDelay.cs</DependentUpon>
-    </Compile>
     <Compile Include="Trade\FrmRecharge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,8 +128,17 @@
     <EmbeddedResource Include="Card\FrmManager.resx">
       <DependentUpon>FrmManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Card\FrmPostponed.resx">
+      <DependentUpon>FrmPostponed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Card\FrmRecovery.resx">
+      <DependentUpon>FrmRecovery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Card\FrmView.resx">
       <DependentUpon>FrmView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInfo.resx">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInit.resx">
       <DependentUpon>FrmInit.cs</DependentUpon>
@@ -128,15 +156,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Trade\FrmDelay.resx">
-      <DependentUpon>FrmDelay.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Trade\FrmRecharge.resx">
       <DependentUpon>FrmRecharge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trade\FrmRecovery.resx">
       <DependentUpon>FrmRecovery.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,6 +207,48 @@
       <Project>{53093f21-4c2c-4a10-b309-ec2744aad71b}</Project>
       <Name>Tools</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deliver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\general-options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager_opportunity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager_Train.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\member_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\publish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view_resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

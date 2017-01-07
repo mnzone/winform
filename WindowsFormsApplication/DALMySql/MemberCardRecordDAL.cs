@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using IDAL;
 using Models;
 using MySql.Data.MySqlClient;
 
 namespace DALMySql
 {
-    class MemberCardRecordDAL : IDAL.IMemberCardRecordDAL
+    class MemberCardRecordDAL : BaseDAL, IMemberCardRecordDAL
     {
         public int delete(int id)
         {
@@ -71,7 +72,7 @@ namespace DALMySql
             {
                 Value = model.Id
             });
-            String sql = "UPDATE members_cards_records SET balance = @balance, begin_at = @begin_at, expired_at = @expired_at, member_card_id = @member_card_id, updated_at = @updated_at WHERE id = @id;";
+            String sql = "UPDATE members_cards_records SET balance = @balance, begin_at = @begin_at, expired_at = @expired_at, status = @status, member_card_id = @member_card_id, updated_at = @updated_at WHERE id = @id;";
             return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param.ToArray());
         }
 
@@ -88,6 +89,9 @@ namespace DALMySql
                 record.ExpiredAt = rdr["expired_at"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["expired_at"]);
                 record.MemberCardId = rdr["member_card_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["member_card_id"]);
                 record.UpdatedAt = rdr["updated_at"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["updated_at"]);
+                record.Status = rdr["status"] == DBNull.Value
+                    ? Status.Disabled
+                    : (Status) Enum.Parse(typeof(Status), rdr["status"].ToString());
             }
             return record;
         }
@@ -100,6 +104,7 @@ namespace DALMySql
                 new MySqlParameter("@begin_at", MySqlDbType.Int32, 11),
                 new MySqlParameter("@expired_at", MySqlDbType.Int32, 11),
                 new MySqlParameter("@member_card_id", MySqlDbType.Int32, 11),
+                new MySqlParameter("@status", MySqlDbType.Enum, 11),
                 new MySqlParameter("@created_at", MySqlDbType.Int32, 11),
                 new MySqlParameter("@updated_at", MySqlDbType.Int32, 11),
             };
@@ -108,8 +113,9 @@ namespace DALMySql
             parameters[1].Value = model.BeginAt;
             parameters[2].Value = model.ExpiredAt;
             parameters[3].Value = model.MemberCardId;
-            parameters[4].Value = model.CreatedAt;
-            parameters[5].Value = model.UpdatedAt;
+            parameters[4].Value = model.Status;
+            parameters[5].Value = model.CreatedAt;
+            parameters[6].Value = model.UpdatedAt;
 
             return parameters.ToList();
         }

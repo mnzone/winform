@@ -46,18 +46,11 @@ namespace DALMySql
             return list;
         }
 
-        public List<Goods> findByWhere(DbParameter[] paramArray)
+        public List<Goods> findByWhere(String where, DbParameter[] paramArray)
         {
             MySqlParameter[] param = this.ConvertMySqlParameters(paramArray);
             List<Goods> list = null;
-
-            String where = "";
-            foreach (MySqlParameter item in param)
-            {
-                where += String.Format("{0} = {1} AND ", item.ParameterName.Replace("@", ""), item.ParameterName);
-            }
-
-            where = where.Substring(0, where.Length - 4);
+            
             String sql = String.Format("SELECT * FROM goods WHERE {0} ORDER BY sort DESC, id DESC", where);
             using (MySqlDataReader rdr = Tools.MySqlHelper.ExecuteReader(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param))
             {
@@ -112,6 +105,27 @@ namespace DALMySql
                 goods.UpdatedAt = rdr["updated_at"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["updated_at"]);
             }
             return goods;
+        }
+
+        private List<MySqlParameter> fillParameters(Goods model)
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>(){
+                new MySqlParameter("@name", MySqlDbType.String, 255),
+                new MySqlParameter("@category_id", MySqlDbType.Int32, 11),
+                new MySqlParameter("@sort", MySqlDbType.Int32, 10),
+                new MySqlParameter("@visibile", MySqlDbType.Int32, 11),
+                new MySqlParameter("@created_at", MySqlDbType.Int32, 11),
+                new MySqlParameter("@updated_at", MySqlDbType.Int32, 11),
+            };
+
+            parameters[0].Value = model.Name;
+            parameters[1].Value = model.CategoryId;
+            parameters[2].Value = model.Sort;
+            parameters[3].Value = model.Visibile;
+            parameters[4].Value = model.CreatedAt;
+            parameters[5].Value = model.UpdatedAt;
+
+            return parameters;
         }
     }
 }

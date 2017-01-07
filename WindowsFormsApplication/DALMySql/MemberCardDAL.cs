@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using IDAL;
 using Models;
 using MySql.Data.MySqlClient;
 using MySqlHelper = Tools.MySqlHelper;
 
 namespace DALMySql
 {
-    public class MemberCardDAL : IDAL.IMemberCardDAL
+    public class MemberCardDAL : BaseDAL, IMemberCardDAL
     {
         public int save(MemberCard model)
         {
@@ -21,7 +23,13 @@ namespace DALMySql
 
         public int update(MemberCard model)
         {
-            MySqlParameter[] param = this.fillParameters(model);
+            List<MySqlParameter> parameters = this.fillParameters(model);
+            parameters.Add(new MySqlParameter("@id", MySqlDbType.Int32, 11)
+            {
+                Value = model.Id
+            });
+
+            MySqlParameter[] param = this.ConvertMySqlParameters(parameters);
             String sql = "UPDATE members_cards SET card_no = @card_no, category_id = @category_id, updated_at = @updated_at WHERE id = @id;";
             return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
         }
@@ -94,11 +102,11 @@ namespace DALMySql
             return card;
         }
 
-        private MySqlParameter[] fillParameters(MemberCard model)
+        private List<MySqlParameter> fillParameters(MemberCard model)
         {
             MySqlParameter[] parameters = {
                 new MySqlParameter("@card_no", MySqlDbType.Int32, 11),
-                new MySqlParameter("@category_id", MySqlDbType.Decimal, 10),
+                new MySqlParameter("@category_id", MySqlDbType.Int32, 10),
                 new MySqlParameter("@created_at", MySqlDbType.Int32, 11),
                 new MySqlParameter("@updated_at", MySqlDbType.Int32, 11),
             };
@@ -108,7 +116,7 @@ namespace DALMySql
             parameters[2].Value = model.CreatedAt;
             parameters[3].Value = model.UpdatedAt;
 
-            return parameters;
+            return parameters.ToList();
         }
     }
 }

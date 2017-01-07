@@ -4,16 +4,31 @@ using System.Data;
 using System.Data.SQLite;
 using IDAL;
 using Models;
-using MySql.Data.MySqlClient;
 using Tools;
 
 namespace DALSQLite
 {
-    public class SaleLogDAL : ISaleLogDAL
+    public class SaleLogDAL : BaseDAL, ISaleLogDAL
     {
         public int delete(int id)
         {
-            throw new NotImplementedException();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>()
+            {
+                new SQLiteParameter("@id", DbType.Int32, 11)
+                {
+                    Value = id
+                }
+            };
+
+            SQLiteParameter[] param = this.ConvertSQLiteParameters(parameters);
+            String sql = "DELETE FROM sales_record WHERE id = @id;";
+            int row = Tools.SQLiteHelper.ExecuteNonQuery(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
+            if (row > 0)
+            {
+                sql = sql.Replace("@id", String.Format("{0}", id));
+                this.SaveQueue(sql);
+            }
+            return row;
         }
 
         public SaleLog find(int id)
@@ -53,22 +68,19 @@ namespace DALSQLite
         {
             model.CreatedAt = Tools.TimeStamp.GetNowTimeStamp();
 
-            MySqlParameter[] param = new MySqlParameter[]
-            {
-                new MySqlParameter("@goods_id", MySqlDbType.Int32, 11),
-                new MySqlParameter("@money", MySqlDbType.Decimal, 11),
-                new MySqlParameter("@summary", MySqlDbType.VarChar, 255),
-                new MySqlParameter("@created_at", MySqlDbType.Int32, 11),
-                new MySqlParameter("@updated_at", MySqlDbType.Int32, 11),
-            };
-            param[0].Value = model.GoodsId;
-            param[1].Value = model.Money;
-            param[2].Value = model.Summary;
-            param[3].Value = model.CreatedAt;
-            param[4].Value = model.UpdatedAt;
+            SQLiteParameter[] param = this.ConvertSQLiteParameters(fillParameters(model));
 
-            String sql = "INSERT INTO sales_records(goods_id, money, summary, created_at, updated_at) VALUES (@goods_id, @money, @summary, @created_at, @updated_at);";
-            return Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
+            String sql = "INSERT INTO sales_records(goods_id, money, summary, created_at) VALUES (@goods_id, @money, @summary, @created_at);";
+            int row = Tools.SQLiteHelper.ExecuteNonQuery(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
+            if (row > 0)
+            {
+                sql = sql.Replace("@summary", String.Format("'{0}'", model.Summary));
+                sql = sql.Replace("@money", String.Format("{0}", model.Money));
+                sql = sql.Replace("@goods_id", String.Format("{0}", model.GoodsId));
+                sql = sql.Replace("@created_at", String.Format("{0}", model.CreatedAt));
+                this.SaveQueue(sql);
+            }
+            return row;
         }
 
         public int save(List<SaleLog> list)
@@ -102,7 +114,45 @@ namespace DALSQLite
 
         public int update(SaleLog model)
         {
-            throw new NotImplementedException();
+            model.UpdatedAt = Tools.TimeStamp.GetNowTimeStamp();
+            List<SQLiteParameter> parameters = fillParameters(model);
+            parameters.Add(new SQLiteParameter("@goods_id", DbType.Int32, 11)
+            {
+                Value = model.Id
+            });
+            SQLiteParameter[] param = this.ConvertSQLiteParameters(parameters);
+
+            String sql = "UPDATE sales_records SET goods_id = @goods_id, money = @money, summary = @summary, updated_at = @updated_at WHERE id = @id;";
+            int row = Tools.SQLiteHelper.ExecuteNonQuery(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
+            if (row > 0)
+            {
+                sql = sql.Replace("@summary", String.Format("'{0}'", model.Summary));
+                sql = sql.Replace("@money", String.Format("{0}", model.Money));
+                sql = sql.Replace("@goods_id", String.Format("{0}", model.GoodsId));
+                sql = sql.Replace("@updated_at", String.Format("{0}", model.UpdatedAt));
+                sql = sql.Replace("@id", String.Format("{0}", model.Id));
+                this.SaveQueue(sql);
+            }
+            return row;
+        }
+
+        private List<SQLiteParameter> fillParameters(SaleLog model)
+        {
+            List<SQLiteParameter> param = new List<SQLiteParameter>()
+            {
+                new SQLiteParameter("@goods_id", DbType.Int32, 11),
+                new SQLiteParameter("@money", DbType.Decimal, 11),
+                new SQLiteParameter("@summary", DbType.String, 255),
+                new SQLiteParameter("@created_at", DbType.Int32, 11),
+                new SQLiteParameter("@updated_at", DbType.Int32, 11),
+            };
+            param[0].Value = model.GoodsId;
+            param[1].Value = model.Money;
+            param[2].Value = model.Summary;
+            param[3].Value = model.CreatedAt;
+            param[4].Value = model.UpdatedAt;
+
+            return param;
         }
 
         private SaleLog fillSaleLog(SQLiteDataReader rdr)

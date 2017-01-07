@@ -23,13 +23,13 @@ namespace MemberCard.Card
 
         private void tsBtnDelay_Click(object sender, System.EventArgs e)
         {
-            FrmDelay frmDelay = new FrmDelay();
-            frmDelay.ShowDialog();
+            FrmPostponed frmPostponed = new FrmPostponed();
+            frmPostponed.ShowDialog();
         }
 
         private void tsBtnRecovery_Click(object sender, System.EventArgs e)
         {
-            FrmRecovery frmRecovery = new FrmRecovery();
+            Trade.FrmRecovery frmRecovery = new Trade.FrmRecovery();
             frmRecovery.ShowDialog();
         }
 
@@ -91,7 +91,7 @@ namespace MemberCard.Card
                 return;
             }
 
-            FrmRecovery frmRecovery = new FrmRecovery(card);
+            FrmRecovery frmRecovery = new FrmRecovery();
             frmRecovery.ShowDialog();
         }
 

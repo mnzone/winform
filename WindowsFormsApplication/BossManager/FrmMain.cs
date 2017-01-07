@@ -365,16 +365,21 @@ namespace BossManager
 
         private void btnMonthReportSearch_Click(object sender, EventArgs e)
         {
+            String msg = null;
             if (String.IsNullOrEmpty(this.cmbMonth.Text.Trim()))
             {
-                MessageBox.Show("请选择月份!", "数据不完整", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                msg = "请选择月份!";
             }else if (String.IsNullOrEmpty(this.cmbYear.Text.Trim()))
             {
-                MessageBox.Show("请选择年份!", "数据不完整", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                msg = "请选择年份!";
+            }
+
+            if (! String.IsNullOrEmpty(msg))
+            {
+                MessageBox.Show(msg, "数据不完整", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             loadMonthData(Convert.ToInt32(this.cmbYear.Text.Trim()), Convert.ToInt32(this.cmbMonth.Text.Trim()));
         }
 

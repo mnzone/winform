@@ -18,11 +18,13 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\MemberCar
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.csprojResolveAssemblyReference.cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmAdd.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmManager.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmPostponed.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmRecovery.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Card.FrmView.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.FrmInfo.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.FrmInit.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.FrmMain.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Properties.Resources.resources
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmDelay.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmRecharge.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmRecovery.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.csproj.GenerateResource.Cache

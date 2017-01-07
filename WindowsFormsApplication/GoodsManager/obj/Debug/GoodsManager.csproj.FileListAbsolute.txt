@@ -24,3 +24,6 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\Goo
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.csproj.GenerateResource.Cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.exe
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\System.Data.SQLite.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\Tools.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\System.Data.SQLite.xml

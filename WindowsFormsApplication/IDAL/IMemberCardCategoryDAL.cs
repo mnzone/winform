@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using Models;
 
 namespace IDAL
@@ -23,5 +24,7 @@ namespace IDAL
         List<MemberCardCategory> findAll();
 
         List<MemberCardCategory> findByWhere(String where);
+
+        List<MemberCardCategory> findByWhere(String where, DbParameter[] whereParameters);
     }
 }

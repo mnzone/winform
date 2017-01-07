@@ -24,7 +24,7 @@ namespace BLLDB
 
         public GoodsCategory GetCategory(int id)
         {
-            throw new NotImplementedException();
+            return dal.find(id);
         }
     }
 }

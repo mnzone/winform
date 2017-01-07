@@ -40,7 +40,8 @@ namespace BLLDB
 
         public MemberCardRecord GetMemberCardRecordByMemberCardId(int cardId)
         {
-            List<MemberCardRecord> list = dal.findByWhere(String.Format("member_card_id = {0} AND begin_at < {1} AND expired_at > {1}", cardId, Tools.TimeStamp.GetNowTimeStamp()));
+            //List<MemberCardRecord> list = dal.findByWhere(String.Format("member_card_id = {0} AND begin_at < {1} AND expired_at > {1}", cardId, Tools.TimeStamp.GetNowTimeStamp()));
+            List<MemberCardRecord> list = dal.findByWhere(String.Format("member_card_id = {0}", cardId));
             return list == null || list.Count < 1 ? null : list[0];
         }
 

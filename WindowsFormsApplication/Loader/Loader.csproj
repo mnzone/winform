@@ -200,6 +200,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icon\download.ico" />
     <Content Include="Assets\Icon\icon_1.ico" />
     <Content Include="Assets\Icon\icon_2.ico" />
     <Content Include="Assets\Icon\icon_3.ico" />
@@ -208,15 +209,28 @@
     <Content Include="Assets\Icon\icon_6.ico" />
     <Content Include="Assets\Icon\icon_7.ico" />
     <Content Include="Assets\Icon\icon_8.ico" />
+    <Content Include="Assets\Icon\refresh.ico" />
+    <Content Include="Assets\Icon\stop.ico" />
+    <Content Include="Assets\Icon\success.ico" />
+    <Content Include="Assets\Icon\upload.ico" />
     <Content Include="Assets\Image\avatar.jpg" />
     <Content Include="Assets\Image\loader_bg.jpg" />
     <Content Include="Assets\Image\loader_bg1.JPG" />
     <Content Include="Assets\Image\login_top.jpg" />
     <Content Include="Assets\Png\add-card.png" />
     <Content Include="Assets\Png\book.png" />
+    <Content Include="Assets\Png\deliver.png" />
+    <Content Include="Assets\Png\exit.png" />
     <Content Include="Assets\Png\general-options.png" />
     <Content Include="Assets\Png\help.png" />
+    <Content Include="Assets\Png\hide.png" />
+    <Content Include="Assets\Png\manager_opportunity.png" />
+    <Content Include="Assets\Png\manager_Train.png" />
+    <Content Include="Assets\Png\member_check.png" />
     <Content Include="Assets\Png\publish.png" />
+    <Content Include="Assets\Png\return.png" />
+    <Content Include="Assets\Png\show.png" />
+    <Content Include="Assets\Png\view_resume.png" />
     <Content Include="icon_1.ico" />
     <Content Include="libs\ICSharpCode.SharpZipLib.dll" />
     <Content Include="libs\IrisSkin4.dll" />

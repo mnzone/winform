@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ using MemberCard.Trade;
 using Models;
 using Tools;
 using GoodsManager.Trade;
+using FrmAdd = GoodsManager.Manager.FrmAdd;
 
 namespace MemberCard
 {
@@ -28,6 +30,8 @@ namespace MemberCard
         private int pageSize = 10;
         private int pageIndex = 0;
         private List<Goods> goodses = null;
+
+        private FrmInfo frmInfo = null;
 
         public FrmMain()
         {
@@ -63,6 +67,7 @@ namespace MemberCard
         private void tsBtnRecharge_Click(object sender, System.EventArgs e)
         {
             FrmRecharge frmRecharge = new FrmRecharge();
+            frmRecharge.Callback = AddRecordToDataGridView;
             frmRecharge.ShowDialog();
         }
 
@@ -92,14 +97,18 @@ namespace MemberCard
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            this.frmInfo = new FrmInfo(this.Width + 500);
+            this.tsBtnSwitch_Click(this.tsBtnSwitch, null);
+
             initBll();
             initUI();
             loadGoods();
+            startSyn();
         }
 
         private void FrmView_SizeChanged(object sender, EventArgs e)
         {
-            changeLoction();
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -182,6 +191,11 @@ namespace MemberCard
             this.labStatus.ForeColor = fontColor;
             this.labStatus.Left = (this.panelStatus.Width - this.labStatus.Width) / 2;
 
+            if (frmInfo != null)
+            {
+                frmInfo.ChangeText(this.card, msg, fontColor);
+            }
+
             if (String.IsNullOrEmpty(audioKey))
             {
                 return;
@@ -197,24 +211,6 @@ namespace MemberCard
             catch (ConfigurationErrorsException e)
             {
             }
-            
-            
-        }
-
-        private void changeLoction()
-        {
-            /*this.labCardNo.Left = (this.panel1.Width - this.labCardNo.Width) / 2;
-            this.labCardNo.Top = (this.panel1.Height - this.labCardNo.Height) / 2;
-
-            this.labCategory.Left = this.labCardNo.Left;
-            this.labCategory.Top = this.labCardNo.Top;
-            this.labCardNum.Left = this.labCardNo.Left;
-            this.labCardNum.Top = this.labCardNo.Top;
-            this.labExpire.Left = this.labCardNo.Left;
-            this.labExpire.Top = this.labCardNo.Top;
-
-            this.labStatus.Left = (this.panel1.Width - this.labStatus.Width) / 2;
-            this.labStatus.Top = this.labCardNo.Top;*/
         }
 
         /// <summary>
@@ -263,6 +259,10 @@ namespace MemberCard
             {
                 msg = "此卡不在可用时间段!";
                 audioKey = "AudioCardTimeInvalid";
+            }else if (card.Record.Status == Status.Disabled)
+            {
+                msg = "此卡已回收，请重新开卡后使用!";
+                audioKey = "AudioCardStatusInvalid";
             }
 
             if (! String.IsNullOrEmpty(msg))
@@ -399,6 +399,69 @@ namespace MemberCard
         private void timer_Tick(object sender, EventArgs e)
         {
             this.txtKeyword.Focus();
+        }
+
+        private void tsBtnPostponed_Click(object sender, EventArgs e)
+        {
+            FrmPostponed frmPostponed = new FrmPostponed();
+            frmPostponed.Callback = AddRecordToDataGridView;
+            frmPostponed.ShowDialog();
+        }
+
+        private void tsBtnRecords_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsBtnMemberSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsBtnAdd_Click(object sender, EventArgs e)
+        {
+            FrmAdd frmAdd = new FrmAdd();
+            frmAdd.ShowDialog();
+        }
+
+        private void tsbReNew_Click(object sender, EventArgs e)
+        {
+            Trade.FrmRecovery frmRecovery = new Trade.FrmRecovery();
+            frmRecovery.ShowDialog();
+        }
+
+        private void tsBtnSwitch_Click(object sender, EventArgs e)
+        {
+            if (this.tsBtnSwitch.Text == "显示前端信息")
+            {
+                this.frmInfo.Show();
+
+                this.tsBtnSwitch.Image = global::MemberCard.Properties.Resources.hide;
+                this.tsBtnSwitch.Text = "隐藏前端信息";
+            }
+            else
+            {
+                this.frmInfo.Hide();
+
+                this.tsBtnSwitch.Image = global::MemberCard.Properties.Resources.show;
+                this.tsBtnSwitch.Text = "显示前端信息";
+            }
+        }
+
+        private void startSyn()
+        {
+            bool autoRun = Convert.ToBoolean(ConfigurationManager.AppSettings["DataSynAutoRun"]);
+            String path = ConfigurationManager.AppSettings["DataSynPath"];
+            if ( ! autoRun)
+            {
+                return;
+            }
+
+            if (String.IsNullOrEmpty(path))
+            {
+                return;
+            }
+            Process.Start(path);
         }
     }
 }

@@ -27,6 +27,11 @@ namespace FactoryImpl
             return GetIFactory().CreateGoodsInstance();
         }
 
+        public static IGoodsCategoryBLL GetGoodsCategoryBll()
+        {
+            return GetIFactory().CreateGoodsCategoryInstance();
+        }
+
         public static ISaleLogBLL GetSaleLogBll()
         {
             return GetIFactory().CreateSaleLogInstance();

@@ -10,4 +10,10 @@
         MONTH,
         DAY
     }
+
+    public enum Status
+    {
+        Enabled,
+        Disabled
+    }
 }

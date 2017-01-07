@@ -6,7 +6,7 @@ namespace DALSQLite
     {
         public IGoodsDAL CreateGoodsInstance()
         {
-            throw new System.NotImplementedException();
+            return new GoodsDAL();
         }
 
         public ISaleLogDAL CreateSaleLogInstance()
@@ -16,32 +16,32 @@ namespace DALSQLite
 
         public IMemberCardDAL CreateMemberCardInstance()
         {
-            throw new System.NotImplementedException();
+            return new MemberCardDAL();
         }
 
         public IMemberCardCategoryDAL CreateMemberCardCategoryInstance()
         {
-            throw new System.NotImplementedException();
+            return new MemberCardCategoryDAL();
         }
 
         public IMemberCardCategoryValueDAL CreateMemberCardCategoryValueInstance()
         {
-            throw new System.NotImplementedException();
+            return new MemberCardCategoryValueDAL();
         }
 
         public IReportDAL CreateReportInstance()
         {
-            throw new System.NotImplementedException();
+            return new ReportDAL();
         }
 
         public IGoodsCategoryDAL CreateGoodsCategoryInstance()
         {
-            throw new System.NotImplementedException();
+            return new GoodsCategoryDAL();
         }
 
         public IMemberCardRecordDAL CreateMemberCardRecordInstance()
         {
-            throw new System.NotImplementedException();
+            return new MemberCardRecordDAL();
         }
     }
 }

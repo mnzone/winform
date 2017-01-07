@@ -5,10 +5,11 @@
         private int id;
         private int memberCardId;
         private decimal balance;
-        private int beginAt;
-        private int expiredAt;
-        private int createdAt;
-        private int updatedAt;
+        private long beginAt;
+        private long expiredAt;
+        private long createdAt;
+        private long updatedAt;
+        private Status status;
         private MemberCard card;
 
         public int Id
@@ -50,7 +51,7 @@
             }
         }
 
-        public int BeginAt
+        public long BeginAt
         {
             get
             {
@@ -63,7 +64,7 @@
             }
         }
 
-        public int ExpiredAt
+        public long ExpiredAt
         {
             get
             {
@@ -76,7 +77,7 @@
             }
         }
 
-        public int CreatedAt
+        public long CreatedAt
         {
             get
             {
@@ -89,7 +90,7 @@
             }
         }
 
-        public int UpdatedAt
+        public long UpdatedAt
         {
             get
             {
@@ -112,6 +113,19 @@
             set
             {
                 card = value;
+            }
+        }
+
+        public Status Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
             }
         }
     }
