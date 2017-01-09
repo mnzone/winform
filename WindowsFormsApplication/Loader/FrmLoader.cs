@@ -1,11 +1,18 @@
-﻿using Sunisoft.IrisSkin;
+﻿using DelegateLibrary;
+using Sunisoft.IrisSkin;
 using System;
 using System.Configuration;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
+using Loader.Common;
+using Newtonsoft.Json.Linq;
 using Tools;
+using Update;
+using Update.Models;
+using AppConfigHelper = Tools.AppConfigHelper;
 
 namespace Loader
 {
@@ -40,22 +47,17 @@ namespace Loader
 
         private Object currentObject = null;
         private MethodInfo currentMethod = null;
-
-        private long buildUI = 0;
-        private long buildUpdate = 0;
-        private long buildLoader = 0;
-        private long buildModel = 0;
-        private long buildTool = 0;
-
+        
         private String module = "";
         private String main = "";
 
         private SkinEngine skin = null;
 
-        private String SoftID = ConfigurationManager.AppSettings["SoftID"].ToString();
-        private String AppID = ConfigurationManager.AppSettings["AppID"].ToString();
-        private String AppSecret = ConfigurationManager.AppSettings["AppSecret"].ToString();
-        private String GUID = ConfigurationManager.AppSettings["GUID"].ToString();
+        private String SoftID = ConfigurationManager.AppSettings["SoftID"];
+        private String AppID = ConfigurationManager.AppSettings["AppID"];
+        private long SoftBuild = Convert.ToInt64(ConfigurationManager.AppSettings["SoftBuild"]);
+        private String AppSecret = ConfigurationManager.AppSettings["AppSecret"];
+        private String GUID = ConfigurationManager.AppSettings["GUID"];
 
 
         public FrmLoader()
@@ -63,6 +65,7 @@ namespace Loader
             InitializeComponent();
             skin = new SkinEngine();
             skin.SkinFile = Application.StartupPath + @"\Assets\Skins\Calmness.ssk";
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         public FrmLoader(int width, int height)
@@ -89,22 +92,9 @@ namespace Loader
             this.module = Common.AppConfigHelper.GetAppSettingsValue("Module");
             this.main = Common.AppConfigHelper.GetAppSettingsValue("Main");
 
-            //获取所有DLL信息
-            GetDllVersion();
             //检查更新
-
-#if DEBUG
-            
-            LoadLogin();
-            this.Hide();
-#else
-            LoadUpdate();
-#endif
-            //执行更新操作
-            //进入系统
-            //LoadUpdate();
-            //
-            //LoadLogin();
+            Thread mainThread = new Thread(checkUpdate);
+            mainThread.Start();
         }
 
         private void loadINI()
@@ -114,170 +104,77 @@ namespace Loader
             if (String.IsNullOrEmpty(expired)
                 || Convert.ToInt64(expired) < TimeStamp.GetNowTimeStamp())
             {
-                String token = GetAccessToken(AppID, AppSecret);
-                iniFile.IniWriteValue("AccessToken", "token", token);
-                iniFile.IniWriteValue("AccessToken", "expired", TimeStamp.GetNowTimeStamp().ToString());
+                String[] token = GetAccessToken(AppID, AppSecret);
+                if (token == null)
+                {
+                    return;
+                }
+                iniFile.IniWriteValue("AccessToken", "token", token[0]);
+                iniFile.IniWriteValue("AccessToken", "expired", token[1]);
+            }
+
+        }
+
+        public static String[] GetAccessToken(String appId, String appSecret)
+        {
+            NetResult result = NetApi.GetAccessToken(appId, appSecret);
+            if (result == null || result.Status == "err")
+            {
+                return null;
+            }
+            JObject item = result.Data as JObject;
+
+            return new String[] { item["access_token"].ToString(), item["access_expired"].ToString() };
+        }
+
+        private void checkUpdate()
+        {
+            CallbackMsg runMsg = this.setLableInfo;
+            Invoke(runMsg, "正在检查更新...");
+            SoftUpdate update = new SoftUpdate();
+            update.UpdateStatusCallback = this.setLableInfo;
+            long build = update.check(SoftBuild);
+            if (build > SoftBuild)
+            {
+                //修改SoftBuild值
+                AppConfigHelper.RootPath = Application.ExecutablePath;
+                AppConfigHelper.SetAppSettingsValue("SoftBuild", build.ToString());
+            }
+            Invoke(runMsg, "hidden");
+
+            //更新完成进入系统
+            Invoke(runMsg, "正在加载资源...");
+            Invoke(runMsg, "BootMain");
+        }
+
+        private void setLableInfo(String text, int code)
+        {
+            CallbackMsg runMsg = this.setLableInfo;
+            Invoke(runMsg, text);
+        }
+
+        /// <summary>
+        /// 设置状态标签内容
+        /// </summary>
+        /// <param name="text"></param>
+        private void setLableInfo(String text)
+        {
+            if (text == "hidden")
+            {
+                this.Hide();
                 return;
             }
-
-        }
-
-        public static String GetAccessToken(String appId, String appSecret)
-        {
-            String md5Value = String.Format("{0}@{1}.{2}", appId, appSecret, TimeStamp.GetNowTimeStamp());
-
-            md5Value = Encryption.MD5(md5Value);
-            return Encryption.SHA1(md5Value);
-        }
-
-        /// <summary>
-        /// 获取必要库版本信息
-        /// </summary>
-        private void GetDllVersion() {
-            this.labStatus.Text = "正在获取版本信息...";
-            try {
-                //获得UI库版本
-                Type type = this.GetTypeObject(this.module, String.Format("{0}.ProgramInfo", this.module));
-                buildUI = Convert.ToInt64(InvokeObject(type, "GetFileVersion"));
-
-                //获得Update库版本
-                type = this.GetTypeObject("Update", "Update.ProgramInfo");
-                buildUpdate = Convert.ToInt64(InvokeObject(type, "GetFileVersion"));
-
-                //获得Model库版本
-                type = this.GetTypeObject("Models", "Models.ProgramInfo");
-                buildModel = Convert.ToInt64(InvokeObject(type, "GetFileVersion"));
-
-                //获得Tool库版本
-                type = this.GetTypeObject("Tools", "Tools.ProgramInfo");
-                buildTool = Convert.ToInt64(InvokeObject(type, "GetFileVersion"));
-            }catch(System.IO.IOException e){
-                MessageBox.Show(e.Message, "缺少必要文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            
-        }
-
-        /// <summary>
-        /// 检测程序是否有更新
-        /// </summary>
-        private void LoadUpdate() {
-            this.labStatus.Text = "正在检查更新...";
-            Type type = this.GetTypeObject("Update", "Update.CheckSoft");
-            //获取方法
-            MethodInfo main = type.GetMethod("CheckUpdate");
-            //实例化对象
-            Object obj = Activator.CreateInstance(type);
-
-            main.Invoke(obj, new Object[] { buildUI });
-
-            this.currentForm = type;
-            this.currentObject = obj;
-            this.currentMethod = type.GetMethod("IsOver");
-            this.timerCheck.Start();
-        }
-
-        /// <summary>
-        /// 处理更新包
-        /// </summary>
-        private void UpdateSoft() {
-            this.labStatus.Text = "正在升级...";
-            Type type = this.GetTypeObject("Update", "Update.SetupPackage");
-            //获取方法
-            MethodInfo main = type.GetMethod("Load");
-            //实例化对象
-            Object obj = null;
-            try
+            else if (text == "BootMain")
             {
-                obj = Activator.CreateInstance(type);
+                Type type = ReflectionTools.GetTypeObject(Application.StartupPath, this.module, String.Format("{0}.{1}", this.module, this.main));
+                //获取方法
+                MethodInfo main = type.GetMethod("Start");
+                //实例化对象
+                Object obj = Activator.CreateInstance(type);
                 main.Invoke(obj, null);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
                 return;
             }
-            
-            
-            //开始查下一个操作
-            this.currentForm = type;
-            this.currentObject = obj;
-            this.currentMethod = type.GetMethod("IsOver");
-            this.timerCheck.Start();
-        }
-
-        /// <summary>
-        /// 加载登录页
-        /// </summary>
-        private void LoadLogin() {
-            this.labStatus.Text = "正在加载资源...";
-            Type type = this.GetTypeObject(this.module, String.Format("{0}.{1}", this.module, this.main));
-            //获取方法
-            MethodInfo main = type.GetMethod("Start");
-            //实例化对象
-            Object obj = Activator.CreateInstance(type);
-            main.Invoke(obj, null);
-        }
-
-        private void timerCheck_Tick(object sender, EventArgs e)
-        {
-            Object result = this.currentMethod.Invoke(this.currentObject, null);
-
-            if ((Boolean)result)
-            {
-                timerCheck.Stop();
-                if (this.currentForm.Name == "CheckSoft")
-                {
-                    bool updateFlag = Convert.ToBoolean(Common.AppConfigHelper.GetAppSettingsValue("UpdateFlag"));
-                    if (updateFlag) {
-                        UpdateSoft();
-                    }else{
-                        this.Hide();
-                        //更新完成进入系统
-                        LoadLogin();
-                    }
-                }
-                else if (this.currentForm.Name == "SetupPackage")
-                {
-                    this.Hide();
-                    //更新完成进入系统
-                    LoadLogin();
-                }
-            }
-        }
-
-        /// <summary>
-        ///  获取指定Dll中的指定对象类型
-        /// </summary>
-        /// <param name="dllFileName">DLL文件名(如:abc.dll)</param>
-        /// <param name="typeName">类型名称(如：People)</param>
-        /// <returns></returns>
-        private Type GetTypeObject(String dllFileName, String typeName) {
-            Assembly assembly = Assembly.LoadFile(String.Format(@"{0}\{1}.dll", Application.StartupPath, dllFileName));
-            Type type = assembly.GetType(typeName);
-            return type;
-        }
-
-        /// <summary>
-        /// 执行指定方法
-        /// </summary>
-        /// <param name="type">对象类型</param>
-        /// <param name="methodName">方法名称</param>
-        /// <returns>获取方法返回的值</returns>
-        private Object InvokeObject(Type type, String methodName) {
-            //获取方法
-            MethodInfo getFileVer = type.GetMethod(methodName);
-            //实例化对象
-            Object programInfo = Activator.CreateInstance(type);
-            return getFileVer.Invoke(programInfo, null);
-        }
-
-        private void InvokeObject(Type type, String methodName, Object[] param) {
-            //获取方法
-            MethodInfo main = type.GetMethod(methodName);
-            //实例化对象
-            Object obj = Activator.CreateInstance(type);
-            main.Invoke(obj, param);
+            this.labStatus.Text = text;
         }
     }
 }

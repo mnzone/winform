@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -6,6 +7,10 @@ namespace BossManager
 {
     public class ProgramInfo
     {
+        public ProgramInfo()
+        {
+        }
+
         /// <summary>
         /// 获取文件版本
         /// </summary>

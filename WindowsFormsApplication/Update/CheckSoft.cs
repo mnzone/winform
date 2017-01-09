@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DelegateLibrary;
+using System;
 using System.Configuration;
 using System.Windows.Forms;
 using Tools;
@@ -10,6 +11,7 @@ namespace Update
     public class CheckSoft
     {
         private UpdatedCallback callback;
+        private UpdatedService service;
 
         public UpdatedCallback Callback
         {

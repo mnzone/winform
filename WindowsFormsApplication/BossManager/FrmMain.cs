@@ -432,5 +432,10 @@ namespace BossManager
             loadMonthData(DateTime.Now.Year, DateTime.Now.Month);
             loadSaleLogs(DateTime.Now.AddDays(-7), DateTime.Now);
         }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

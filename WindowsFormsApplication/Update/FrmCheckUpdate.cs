@@ -1,7 +1,9 @@
 ﻿using IPlugin;
 using System;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
+using Update.Models;
 
 namespace Update
 {
@@ -12,7 +14,7 @@ namespace Update
         private bool connectFlag = false;
         private int count = 1;
         private Boolean isOver;
-        private CheckSoft check;
+        private SoftUpdate check;
 
         public FrmCheckUpdate()
         {
@@ -31,9 +33,15 @@ namespace Update
         {
             this.setLabel("请稍等...");
 
-            this.check = new CheckSoft();
-            this.check.Callback = this.updatingCallback;
-            this.check.CheckUpdate(1);
+            long build = Convert.ToInt64(ConfigurationManager.AppSettings["SoftBuild"]);
+            this.check = new SoftUpdate();
+            this.check.UpdateStatusCallback = this.updatingCallback;
+            Soft soft = this.check.checkUpdate(build);
+            if (soft.Build > build)
+            {
+                MessageBox.Show("发现新版本，请重启软件升级!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void updatingCallback(String msg, int status)

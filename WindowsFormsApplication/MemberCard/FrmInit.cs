@@ -4,6 +4,7 @@ using MemberCard.Common;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using Tools;
 
@@ -46,11 +47,6 @@ namespace MemberCard
 
         private void synData()
         {
-
-            if (this.Visible)
-            {
-                this.Hide();
-            }
 
             if (isSyn)
             {
@@ -136,7 +132,18 @@ namespace MemberCard
 
         private void FrmInit_Load(object sender, EventArgs e)
         {
-            this.timerSyn.Start();
+
+        }
+
+        private void InsertNewRow(String cardNo, int categoryId, long created_at)
+        {
+            String sql = "INSERT INTO members_cards(card_no, category_id, created_at) VALUES";
+            sql += String.Format("('{0}', {1}, {2})", cardNo, categoryId, created_at);
+        }
+
+        private void loadOldRow()
+        {
+            String sql = "SELECT no, category_id, created_at FROM members";
         }
     }
 }

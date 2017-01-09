@@ -9,7 +9,8 @@ namespace Update.Models
 
         public SoftPackage(JObject json) {
             this.id = Convert.ToInt32(json["id"]);
-            this.name = json["title"].ToString();
+            this.name = json["file_name"].ToString();
+            this.Title = json["title"].ToString();
             this.path = json["package_url"].ToString();
             this.soft_id = Convert.ToInt32(json["product_id"]);
             this.summary = json["summary"].ToString();
@@ -48,6 +49,8 @@ namespace Update.Models
             get { return name; }
             set { name = value; }
         }
+
+        private String title;
         private String password;
 
         public String Password
@@ -98,5 +101,17 @@ namespace Update.Models
             set { updatedAt = value; }
         }
 
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+            }
+        }
     }
 }

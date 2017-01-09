@@ -27,6 +27,7 @@ namespace MemberCard
         private void FrmInfo_Load(object sender, EventArgs e)
         {
             this.Left = left;
+            this.WindowState = FormWindowState.Maximized;
             changeLoction();
             loadAds();
         }

@@ -344,7 +344,7 @@ namespace MemberCard
             {
                 return;
             }
-
+            int btnHeight = panelGoods.Height / 10;
             this.panelGoods.Controls.Clear();
 
             List<Goods> items = new List<Goods>();
@@ -360,7 +360,7 @@ namespace MemberCard
                 Button btn = new Button();
                 btn.Dock = DockStyle.Top;
                 btn.Text = item.Name;
-                btn.Height = 45;
+                btn.Height = btnHeight;
                 btn.Tag = item;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.Click += new EventHandler(btnGoods_Click);

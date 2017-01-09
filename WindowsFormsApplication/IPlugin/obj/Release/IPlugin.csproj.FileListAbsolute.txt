@@ -3,4 +3,3 @@ E:\vs\ticketClient\Ticket\IPlugin\obj\Release\IPlugin.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\bin\Release\IPlugin.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\IPlugin.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\obj\Release\IPlugin.dll
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\IPlugin\obj\Release\IPlugin.csprojResolveAssemblyReference.cache

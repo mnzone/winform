@@ -45,9 +45,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Assets\Icon\icon_7.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -66,6 +71,10 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -73,9 +82,11 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AppConfigHelper.cs" />
+    <Compile Include="Common\NetApi.cs" />
     <Compile Include="Common\ZipHelper.cs" />
     <Compile Include="FrmLoader.cs">
       <SubType>Form</SubType>
@@ -255,9 +266,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DelegateLibrary\DelegateLibrary.csproj">
+      <Project>{CCFDBECB-9852-4FBC-9985-D9A4A407F449}</Project>
+      <Name>DelegateLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\Tools.csproj">
       <Project>{53093F21-4C2C-4A10-B309-EC2744AAD71B}</Project>
       <Name>Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Update\Update.csproj">
+      <Project>{45CE82A3-8D09-43DB-9BD1-62B7D5F48A0B}</Project>
+      <Name>Update</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

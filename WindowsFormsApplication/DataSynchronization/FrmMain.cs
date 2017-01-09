@@ -51,7 +51,7 @@ namespace DataSynchronization
         private void FrmMain_Load(object sender, EventArgs e)
         {
             this.ShowInTaskbar = false;
-            this.notifyIcon.Icon = new Icon(@"F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\Assets\Icon\success.ico");
+            this.notifyIcon.Icon = new Icon(@"Assets\Icon\success.ico");
             masterConnString = ConfigurationManager.ConnectionStrings["SQLiteMasterConnString"].ConnectionString;
 
             Config cfg = GetConfig("AutoRun");
@@ -183,9 +183,9 @@ namespace DataSynchronization
 
         private void refresh()
         {
-            this.notifyIcon.Icon = new Icon(@"F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\Assets\Icon\upload.ico");
+            this.notifyIcon.Icon = new Icon(@"Assets\Icon\upload.ico");
             Thread.Sleep(500);
-            this.notifyIcon.Icon = new Icon(@"F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\Assets\Icon\download.ico");
+            this.notifyIcon.Icon = new Icon(@"Assets\Icon\download.ico");
             Thread.Sleep(500);
         }
 

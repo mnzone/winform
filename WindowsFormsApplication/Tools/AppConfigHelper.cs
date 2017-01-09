@@ -28,9 +28,8 @@ namespace Tools
         /// <returns></returns>
         public static string GetAppSettingsValue(String key)
         {
-            List<string> list = new List<string>();
             AppSettingsSection section = (AppSettingsSection)GetSection();
-            return section.Settings[key].Value;
+            return section.Settings[key] == null ? "" : section.Settings[key].Value;
 
         }
 

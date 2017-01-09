@@ -1,4 +1,6 @@
-﻿using System.Web.Security;
+﻿using System;
+using System.Text;
+using System.Web.Security;
 
 namespace Tools
 {
@@ -36,7 +38,13 @@ namespace Tools
 
             return FormsAuthentication.HashPasswordForStoringInConfigFile(source, "MD5"); ;
 
-        } 
+        }
+
+        public static String Base64(String source)
+        {
+            byte[] bytes = Encoding.Default.GetBytes(source);
+            return Convert.ToBase64String(bytes);
+        }
 
     }
 }

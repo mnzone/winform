@@ -182,7 +182,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "会员信息显示";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmInfo_Load);
             this.SizeChanged += new System.EventHandler(this.FrmInfo_SizeChanged);
             this.tableLayoutPanel1.ResumeLayout(false);

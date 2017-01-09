@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timerCheck = new System.Windows.Forms.Timer(this.components);
             this.labStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // timerCheck
-            // 
-            this.timerCheck.Interval = 1000;
-            this.timerCheck.Tick += new System.EventHandler(this.timerCheck_Tick);
             // 
             // labStatus
             // 
@@ -67,8 +60,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timerCheck;
         private System.Windows.Forms.Label labStatus;
     }
 }

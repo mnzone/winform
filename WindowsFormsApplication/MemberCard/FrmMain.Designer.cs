@@ -207,6 +207,7 @@
             this.tsBtnUpdate.Size = new System.Drawing.Size(60, 75);
             this.tsBtnUpdate.Text = "更新系统";
             this.tsBtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnUpdate.Visible = false;
             this.tsBtnUpdate.Click += new System.EventHandler(this.tsBtnUpdate_Click);
             // 
             // tsBtnExit
