@@ -178,10 +178,23 @@ namespace MemberCard
                 return;
             }
 
+            String expireDate, createdDate, balance;
+            expireDate = createdDate = balance = "未激活";
+            if (this.card.Record.Status == Status.Disabled)
+            {
+                expireDate = createdDate = balance = "已回收";
+            }
+            else
+            {
+                expireDate = TimeStamp.ConvertIntDateTime(this.card.Record.ExpiredAt).ToString("yyyy-MM-dd");
+                createdDate = TimeStamp.ConvertIntDateTime(this.card.Record.BeginAt).ToString("yyyy-MM-dd");
+                balance = String.Format("{0}次", Convert.ToInt32(this.card.Record.Balance));
+            }
+
+            this.labExpire.Text = expireDate;
+            this.labCreatedAt.Text = createdDate;
+            this.labBalance.Text = balance;
             this.labType.Text = this.card.Category.Name;
-            this.labExpire.Text = this.card.Record == null ? "未激活" : TimeStamp.ConvertIntDateTime(this.card.Record.ExpiredAt).ToString("yyyy-MM-dd");
-            this.labCreatedAt.Text = this.card.Record == null ? "未激活" : TimeStamp.ConvertIntDateTime(this.card.Record.BeginAt).ToString("yyyy-MM-dd");
-            this.labBalance.Text = this.card.Record == null ? "未激活" : String.Format("{0}次", Convert.ToInt32(this.card.Record.Balance));
             this.labNo.Text = this.card.CardNo;
         }
 
@@ -245,6 +258,11 @@ namespace MemberCard
                 msg = "此卡未开启!";
                 audioKey = "AudioCardNotAvailable";
             }
+            else if (card.Record.Status == Status.Disabled)
+            {
+                msg = "此卡已回收，请重新开卡后使用!";
+                audioKey = "AudioCardStatusInvalid";
+            }
             else if (card.Record.Balance <= 0)
             {
                 msg = "此卡次数不足，请充值后再试!";
@@ -259,10 +277,6 @@ namespace MemberCard
             {
                 msg = "此卡不在可用时间段!";
                 audioKey = "AudioCardTimeInvalid";
-            }else if (card.Record.Status == Status.Disabled)
-            {
-                msg = "此卡已回收，请重新开卡后使用!";
-                audioKey = "AudioCardStatusInvalid";
             }
 
             if (! String.IsNullOrEmpty(msg))
@@ -450,6 +464,9 @@ namespace MemberCard
 
         private void startSyn()
         {
+#if DEBUG
+            return;
+#endif
             bool autoRun = Convert.ToBoolean(ConfigurationManager.AppSettings["DataSynAutoRun"]);
             String path = ConfigurationManager.AppSettings["DataSynPath"];
             if ( ! autoRun)
@@ -462,6 +479,12 @@ namespace MemberCard
                 return;
             }
             Process.Start(path);
+        }
+
+        private void tsBtnStatement_Click(object sender, EventArgs e)
+        {
+            FrmSaleLog frmLog = new FrmSaleLog();
+            frmLog.ShowDialog();
         }
     }
 }

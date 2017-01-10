@@ -99,9 +99,19 @@ namespace GoodsManager.Trade
 
         private void btnSubmit_Click(object sender, System.EventArgs e)
         {
+            String msg = null;
             if (String.IsNullOrEmpty(this.txtFee.Text.Trim()))
             {
-                MessageBox.Show("请填写销售金额!", "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                msg = "请填写销售金额!";
+            }
+            else if (Convert.ToDecimal(this.txtFee.Text.Trim()) < 1)
+            {
+                msg = "销售金额必须大于0元!";
+            }
+
+            if ( ! String.IsNullOrEmpty(msg))
+            {
+                MessageBox.Show(msg, "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             SaleLog log = new SaleLog();
@@ -123,6 +133,26 @@ namespace GoodsManager.Trade
 
             callback(log.Summary);
             this.Close();
+        }
+
+        private void txtFee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8
+                || e.KeyChar == 13)
+            {
+                return;
+            }
+
+            if ((e.KeyChar < '0' || e.KeyChar > '9') 
+                    && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            if (this.txtFee.Text.Trim().IndexOf(".") > -1 && e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -43,7 +43,16 @@ namespace DALSQLite
                 {
                     ReportGoodsRank rank = new ReportGoodsRank();
 
-                    rank.Month = rdr["day"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["day"]);
+                    if (sql.IndexOf("year") > -1)
+                    {
+                        rank.Id = rdr["year"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["year"]);
+                        rank.Month = rdr["month"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["month"]);
+                    }
+                    else if (sql.IndexOf("day") > -1)
+                    {
+                        rank.Month = rdr["day"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["day"]);
+                    }
+
                     rank.GoodsName = rdr["name"] == DBNull.Value ? "" : rdr["name"].ToString();
 
                     rank.Count = rdr["count"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["count"]);

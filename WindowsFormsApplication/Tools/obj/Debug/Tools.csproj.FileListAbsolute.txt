@@ -15,5 +15,6 @@ H:\vs\TicketClient\TicketClient\Tools\obj\Debug\Tools.csprojResolveAssemblyRefer
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Tools.dll.config
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Tools.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Tools.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Tools\obj\Debug\Tools.csprojResolveAssemblyReference.cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Tools\obj\Debug\Tools.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Tools\obj\Debug\Tools.pdb

@@ -59,5 +59,19 @@ namespace BLLDB
 
             return dal.GetStatisticsBySql(sql);
         }
+
+        public List<ReportGoodsRank> GetStatisticsTodayCategorySale()
+        {
+            long beginAt = TimeStamp.ConvertDateTimeInt(DateTime.Now.Date);
+            String sql = String.Format("SELECT c.name, SUM(s.money) AS money, COUNT(*) AS count FROM sales_records AS s LEFT JOIN goods AS g ON g.id = s.goods_id LEFT JOIN goods_categories AS c ON g.category_id = c.id WHERE c.sort > 0 AND s.created_at BETWEEN {0} AND {1} GROUP BY c.id ORDER BY c.sort DESC;", beginAt, TimeStamp.GetNowTimeStamp());
+            return dal.GetStatisticsBySql(sql);
+        }
+
+        public List<ReportGoodsRank> GetStatisticsTodayGoodsSale()
+        {
+            long beginAt = TimeStamp.ConvertDateTimeInt(DateTime.Now.Date);
+            String sql = String.Format("SELECT g.name, SUM(s.money) AS money, COUNT(*) AS count FROM sales_records AS s LEFT JOIN goods AS g ON g.id = s.goods_id WHERE s.created_at BETWEEN {0} AND {1} GROUP BY g.id ORDER BY g.sort DESC;", beginAt, TimeStamp.GetNowTimeStamp());
+            return dal.GetStatisticsBySql(sql);
+        }
     }
 }

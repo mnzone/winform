@@ -57,6 +57,11 @@ namespace FactoryImpl
             return GetIFactory().CreateMemberCardRecordInstance();
         }
 
+        public static IReportBLL GetReportBll()
+        {
+            return GetIFactory().CreateReportInstance();
+        }
+
         /// <summary>
         /// 获取BLL构造器
         /// </summary>

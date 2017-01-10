@@ -89,7 +89,11 @@ namespace MemberCard.Trade
             }
 
             this.btnSubmit.Enabled = false;
+            this.validTime.Visible = false;
+            this.labTip.Visible = false;
             this.card = null;
+            this.cmbMoney.DataSource = null;
+            this.txtMoney.Clear();
             MessageBox.Show("充值成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -119,6 +123,8 @@ namespace MemberCard.Trade
                 return;
             }
 
+            this.validTime.Visible = true;
+            this.labTip.Visible = true;
             List<MemberCardCategoryValue> items = catValueBll.GetAllMemberCardCategoryValuesByCategoryId(this.card.CategoryId);
             this.cmbMoney.DisplayMember = "ValueNum";
             this.cmbMoney.ValueMember = "Money";
@@ -172,13 +178,13 @@ namespace MemberCard.Trade
             switch (unit)
             {
                 case ValidUnit.YEAR:
-                    value.AddYears(num);
+                    value = value.AddYears(num);
                     break;
                 case ValidUnit.MONTH:
-                    value.AddMonths(num);
+                    value = value.AddMonths(num);
                     break;
                 case ValidUnit.DAY:
-                    value.AddDays(num);
+                    value = value.AddDays(num);
                     break;
                 case ValidUnit.NONE:
                     break;
@@ -193,7 +199,7 @@ namespace MemberCard.Trade
             {
                 return;
             }
-            this.validTime.Value = this.setExpireDate(value.ValidUnit, value.ValueNum);
+            this.validTime.Value = this.setExpireDate(value.ValidUnit, value.VaildValue);
             this.txtMoney.Text = value.Money.ToString();
         }
 

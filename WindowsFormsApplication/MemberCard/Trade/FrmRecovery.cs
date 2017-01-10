@@ -52,6 +52,7 @@ namespace MemberCard.Trade
 
             this.btnRecovery.Enabled = false;
             this.card.Record.Status = Status.Disabled;
+            this.card.Record.Balance = 0;
             if (this.recordBll.EditMemberCardRecord(this.card.Record))
             {
                 MessageBox.Show("卡片已收回!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);

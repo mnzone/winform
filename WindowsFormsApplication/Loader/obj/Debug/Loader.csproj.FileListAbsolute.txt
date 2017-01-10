@@ -35,7 +35,14 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IrisSkin4
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\log4net.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\MySql.Data.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Newtonsoft.Json.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\System.Data.SQLite.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\DelegateLibrary.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Tools.pdb
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Update.pdb
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Newtonsoft.Json.xml
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\System.Data.SQLite.xml
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.pdb
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.csprojResolveAssemblyReference.cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.FrmLoader.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.FrmUpdate.resources
@@ -43,10 +50,3 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.Pr
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.csproj.GenerateResource.Cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.exe
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Debug\Loader.pdb
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\System.Data.SQLite.dll
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.dll
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\DelegateLibrary.pdb
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Tools.pdb
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\Update.pdb
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\System.Data.SQLite.xml
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\IPlugin.pdb

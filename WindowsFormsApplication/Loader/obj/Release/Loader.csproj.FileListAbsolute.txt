@@ -20,6 +20,8 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\log4net
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\MySql.Data.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Newtonsoft.Json.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\System.Data.SQLite.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\IPlugin.dll
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\DelegateLibrary.pdb
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\Newtonsoft.Json.xml
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\System.Data.SQLite.xml
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.csprojResolveAssemblyReference.cache
@@ -28,5 +30,3 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.Properties.Resources.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.csproj.GenerateResource.Cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\obj\Release\Loader.exe
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\IPlugin.dll
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Release\DelegateLibrary.pdb

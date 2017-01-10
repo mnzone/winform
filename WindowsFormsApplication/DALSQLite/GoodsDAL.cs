@@ -43,7 +43,15 @@ namespace DALSQLite
 
         public Goods find(int id)
         {
-            throw new System.NotImplementedException();
+            Goods goods = null;
+            String sql = String.Format("SELECT * FROM goods WHERE id = {0}", id);
+            using (SQLiteDataReader rdr = Tools.SQLiteHelper.ExecuteReader(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql))
+            {
+                goods = fillGoods(rdr);
+
+            }
+
+            return goods;
         }
 
         public List<Goods> findAll()

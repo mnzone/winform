@@ -42,5 +42,13 @@ namespace IBLL
         /// <param name="endAt">结束时间</param>
         /// <returns></returns>
         List<ReportGoodsRank> GetStatisticsByCategory(int catId, long beginAt, long endAt);
+
+        /// <summary>
+        /// 获取今日销售统计数据
+        /// </summary>
+        /// <returns></returns>
+        List<ReportGoodsRank> GetStatisticsTodayCategorySale();
+
+        List<ReportGoodsRank> GetStatisticsTodayGoodsSale();
     }
 }

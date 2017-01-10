@@ -27,6 +27,7 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\Membe
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Properties.Resources.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmRecharge.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmRecovery.resources
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.Trade.FrmSaleLog.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.csproj.GenerateResource.Cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\MemberCard\obj\Debug\MemberCard.pdb

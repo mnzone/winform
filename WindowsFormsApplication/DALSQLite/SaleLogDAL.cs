@@ -21,7 +21,7 @@ namespace DALSQLite
             };
 
             SQLiteParameter[] param = this.ConvertSQLiteParameters(parameters);
-            String sql = "DELETE FROM sales_record WHERE id = @id;";
+            String sql = "DELETE FROM sales_records WHERE id = @id;";
             int row = Tools.SQLiteHelper.ExecuteNonQuery(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
             if (row > 0)
             {
@@ -44,7 +44,7 @@ namespace DALSQLite
 
         public List<SaleLog> findByWhere(string where)
         {
-            String sql = "SELECT * FROM sales_record WHERE " + where;
+            String sql = "SELECT * FROM sales_records WHERE " + where;
             sql += " order by id";
 
             List<SaleLog> logs = null;
@@ -163,13 +163,14 @@ namespace DALSQLite
                 log = new SaleLog();
                 log.Id = rdr["id"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["id"]);
                 log.GoodsId = rdr["goods_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["goods_id"]);
-                log.MemberId = rdr["member_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["member_id"]);
-                log.Summary = rdr["name"] == DBNull.Value ? "" : rdr["name"].ToString();
-                log.Remark = rdr["category_id"] == DBNull.Value ? "" : rdr["category_id"].ToString();
-                log.MemberNo = rdr["member_no"] == DBNull.Value ? "" : rdr["member_no"].ToString();
+                log.Summary = rdr["summary"] == DBNull.Value ? "" : rdr["summary"].ToString();
+                //log.MemberId = rdr["member_id"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["member_id"]);
+                //log.Summary = rdr["name"] == DBNull.Value ? "" : rdr["name"].ToString();
+                //log.Remark = rdr["category_id"] == DBNull.Value ? "" : rdr["category_id"].ToString();
+                //log.MemberNo = rdr["member_no"] == DBNull.Value ? "" : rdr["member_no"].ToString();
                 log.Money = rdr["money"] == DBNull.Value ? 0 : Convert.ToDecimal(rdr["money"]);
-                log.CreatedAt = rdr["created_at"] == DBNull.Value ? 0 : Tools.TimeStamp.ConvertDateTimeInt(Convert.ToDateTime(rdr["created_at"]));
-                //log.UpdatedAt = rdr["updated_at"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["updated_at"]);
+                log.CreatedAt = rdr["created_at"] == DBNull.Value ? 0 : Convert.ToInt64(rdr["created_at"]);
+                log.UpdatedAt = rdr["updated_at"] == DBNull.Value ? 0 : Convert.ToInt64(rdr["updated_at"]);
 
             }
             return log;

@@ -13,6 +13,7 @@ namespace Models
         private long updatedAt;
         private String summary;
         private String remark;
+        private Goods goods;
 
         public int Id
         {
@@ -128,6 +129,19 @@ namespace Models
             set
             {
                 remark = value;
+            }
+        }
+
+        public Goods Goods
+        {
+            get
+            {
+                return goods;
+            }
+
+            set
+            {
+                goods = value;
             }
         }
     }
