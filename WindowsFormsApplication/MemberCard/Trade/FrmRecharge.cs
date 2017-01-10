@@ -68,6 +68,12 @@ namespace MemberCard.Trade
                 MessageBox.Show("请先选择充值次数及金额!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            else if (this.card.Record == null || this.card.Record.Status == Status.Disabled)
+            {
+                this.card.Record = new MemberCardRecord();
+                this.card.Record.MemberCardId = this.card.Id;
+                this.card.Record.CreatedAt = TimeStamp.GetNowTimeStamp();
+            }
 
             MemberCardCategoryValue cat = this.cmbMoney.SelectedItem as MemberCardCategoryValue;
             this.card.Record.Balance += cat.ValueNum;
@@ -165,6 +171,7 @@ namespace MemberCard.Trade
 
                 this.card.Record = new MemberCardRecord();
                 this.card.Record.MemberCardId = this.card.Id;
+                this.card.Record.CreatedAt = TimeStamp.GetNowTimeStamp();
             }
 
             this.labMemberCardCategory.Text = this.card.Category.Name;
