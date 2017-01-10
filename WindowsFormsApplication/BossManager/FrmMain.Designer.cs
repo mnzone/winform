@@ -43,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateStart = new System.Windows.Forms.DateTimePicker();
+            this.dateBegin = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabYears = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -179,7 +179,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dateEnd);
-            this.groupBox1.Controls.Add(this.dateStart);
+            this.groupBox1.Controls.Add(this.dateBegin);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -196,6 +196,7 @@
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "查 询";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbCategory
             // 
@@ -236,16 +237,18 @@
             // dateEnd
             // 
             this.dateEnd.Location = new System.Drawing.Point(214, 28);
+            this.dateEnd.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(125, 21);
             this.dateEnd.TabIndex = 1;
             // 
-            // dateStart
+            // dateBegin
             // 
-            this.dateStart.Location = new System.Drawing.Point(64, 28);
-            this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(125, 21);
-            this.dateStart.TabIndex = 0;
+            this.dateBegin.Location = new System.Drawing.Point(64, 28);
+            this.dateBegin.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.dateBegin.Name = "dateBegin";
+            this.dateBegin.Size = new System.Drawing.Size(125, 21);
+            this.dateBegin.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -599,7 +602,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateEnd;
-        private System.Windows.Forms.DateTimePicker dateStart;
+        private System.Windows.Forms.DateTimePicker dateBegin;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabYears;
         private System.Windows.Forms.TabPage tabPage1;

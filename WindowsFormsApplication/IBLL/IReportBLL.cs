@@ -33,5 +33,14 @@ namespace IBLL
         /// <param name="month">月份</param>
         /// <returns></returns>
         List<ReportGoodsRank> GroupStatisticsByDay(int year, int month);
+
+        /// <summary>
+        /// 根据分类及时间段统计销售数量及销售金额
+        /// </summary>
+        /// <param name="catId">分类ID</param>
+        /// <param name="beginAt">开始时间</param>
+        /// <param name="endAt">结束时间</param>
+        /// <returns></returns>
+        List<ReportGoodsRank> GetStatisticsByCategory(int catId, long beginAt, long endAt);
     }
 }

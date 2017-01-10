@@ -13,20 +13,13 @@ namespace IDAL
         /// <param name="end">结束时间</param>
         /// <returns></returns>
         List<ReportGoodsRank> GetGoodsRank(DateTime begin, DateTime end);
+        
 
         /// <summary>
-        /// 按月分组统计指定年份的销售额
+        /// 根据SQL获取商品销售统计数据
         /// </summary>
-        /// <param name="year">年份</param>
+        /// <param name="sql">sql语句</param>
         /// <returns></returns>
-        List<ReportGoodsRank> GetYearStatistics(int year);
-
-        /// <summary>
-        /// 根据年月统计销售额
-        /// </summary>
-        /// <param name="year">年份</param>
-        /// <param name="month">月份</param>
-        /// <returns></returns>
-        List<ReportGoodsRank> GetMonthStatistics(int year, int month);
+        List<ReportGoodsRank> GetStatisticsBySql(String sql);
     }
 }

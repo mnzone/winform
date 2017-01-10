@@ -41,9 +41,9 @@
             this.txtMoney = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labMemberCardNo = new System.Windows.Forms.Label();
             this.labMemberCardCategory = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.labMemberCardNo = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -175,15 +175,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请刷卡";
             // 
-            // labMemberCardNo
-            // 
-            this.labMemberCardNo.AutoSize = true;
-            this.labMemberCardNo.Location = new System.Drawing.Point(131, 52);
-            this.labMemberCardNo.Name = "labMemberCardNo";
-            this.labMemberCardNo.Size = new System.Drawing.Size(58, 21);
-            this.labMemberCardNo.TabIndex = 16;
-            this.labMemberCardNo.Text = "请刷卡";
-            // 
             // labMemberCardCategory
             // 
             this.labMemberCardCategory.AutoSize = true;
@@ -201,6 +192,15 @@
             this.label4.Size = new System.Drawing.Size(106, 21);
             this.label4.TabIndex = 17;
             this.label4.Text = "会员卡种类：";
+            // 
+            // labMemberCardNo
+            // 
+            this.labMemberCardNo.AutoSize = true;
+            this.labMemberCardNo.Location = new System.Drawing.Point(131, 52);
+            this.labMemberCardNo.Name = "labMemberCardNo";
+            this.labMemberCardNo.Size = new System.Drawing.Size(58, 21);
+            this.labMemberCardNo.TabIndex = 16;
+            this.labMemberCardNo.Text = "请刷卡";
             // 
             // FrmRecharge
             // 

@@ -75,7 +75,15 @@ namespace BossManager
             
             //填充数据
             List<ReportGoodsRank> dataSources = bll.GroupStatisticsByDay(year, month);
+
             int endDay = Convert.ToDateTime(Convert.ToDateTime(String.Format("{0}-{1}-01", year, month)).AddMonths(1).ToString("yyyy-MM-01")).AddDays(-1).Day;
+            if (year == DateTime.Now.Year
+                && month == DateTime.Now.Month)
+            {
+                endDay = DateTime.Now.Day;
+            }
+            
+
             for (int day = 1; day <= endDay; day++)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -93,7 +101,7 @@ namespace BossManager
                         {
                             flag = true;
                             cellTotal += item.Price;
-                            row.Cells.Add(this.getDateGridViewCell(item.Price));
+                            row.Cells.Add(this.getDateGridViewCell(cat.Name.Trim() == "刷卡" ? item.Count : item.Price));
                             //统计某类商品年度销售总额
                             GetValue(cat, item);
                             break;
@@ -417,6 +425,9 @@ namespace BossManager
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            this.dateBegin.MaxDate = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+            this.dateEnd.MaxDate = this.dateBegin.MaxDate;
+            
             String fileUrl = Application.StartupPath + "/Assets/Icon/icon_8.ico";
             this.Icon = new System.Drawing.Icon(fileUrl);
         }
@@ -436,6 +447,25 @@ namespace BossManager
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            int cid = (this.cmbCategory.SelectedItem as Models.GoodsCategory).Id;
+
+            long begin = TimeStamp.ConvertDateTimeInt(this.dateBegin.Value.Date);
+            long end = TimeStamp.ConvertDateTimeInt(this.dateEnd.Value);
+
+            List<Models.ReportGoodsRank> records = bll.GetStatisticsByCategory(cid, begin, end);
+            this.dgvGoodsRank.Rows.Clear();
+            if (records == null)
+            {
+                return;
+            }
+            foreach (Models.ReportGoodsRank item in records)
+            {
+                this.dgvGoodsRank.Rows.Add(item.GoodsName, item.Price, item.Count);
+            }
         }
     }
 }

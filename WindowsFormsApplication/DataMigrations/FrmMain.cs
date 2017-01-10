@@ -203,7 +203,7 @@ namespace DataMigrations
                         goods_id = 24;
                         break;
                     case "-1":
-                        goods_id = 30;
+                        goods_id = 18;
                         break;
                     case "-2":
                         goods_id = 19;
