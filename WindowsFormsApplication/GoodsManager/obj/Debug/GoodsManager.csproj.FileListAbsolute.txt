@@ -17,8 +17,8 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\Mod
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\Tools.pdb
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\Newtonsoft.Json.xml
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\bin\Debug\System.Data.SQLite.xml
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\GoodsManager.exe.config
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\GoodsManager.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\GoodsManager.dll.config
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\GoodsManager.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\Loader\bin\Debug\GoodsManager.pdb
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.csprojResolveAssemblyReference.cache
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Manager.FrmAdd.resources
@@ -28,5 +28,5 @@ F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\Goo
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Trade.FrmList.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.Trade.FrmSale.resources
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.csproj.GenerateResource.Cache
-F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.exe
+F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.dll
 F:\vs\WindowsFormsApplication\WindowsFormsApplication\GoodsManager\obj\Debug\GoodsManager.pdb

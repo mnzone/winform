@@ -19,6 +19,7 @@ namespace MemberCard.Trade
         private IReportBLL bll = null;
         private ISaleLogBLL logBll = null;
         private IGoodsBLL goodsBll = null;
+        private IGoodsCategoryBLL catBll = null;
 
         public FrmSaleLog()
         {
@@ -31,15 +32,22 @@ namespace MemberCard.Trade
             bll = BllFactory.GetReportBll();
             logBll = BllFactory.GetSaleLogBll();
             goodsBll = BllFactory.GetGoodsBll();
+            catBll = BllFactory.GetGoodsCategoryBll();
 
             loadData();
         }
 
         private void loadData()
         {
+            this.tsslabTotal.Text = "加载中...";
+            Decimal price = 0;
+            int count = 0;
+
             List<ReportGoodsRank> items = bll.GetStatisticsTodayCategorySale();
             foreach (ReportGoodsRank item in items)
             {
+                price += item.Price;
+                count += item.Count;
                 this.dgvStatisticsCategory.Rows.Add(new String[]
                 {
                     item.GoodsName,
@@ -47,6 +55,8 @@ namespace MemberCard.Trade
                     item.Count.ToString()
                 });
             }
+
+            this.tsslabTotal.Text = String.Format("（总金额：{0}元 总数量：{1}件）", price, count);
 
             items = bll.GetStatisticsTodayGoodsSale();
             foreach (ReportGoodsRank item in items)
@@ -63,10 +73,12 @@ namespace MemberCard.Trade
             foreach (SaleLog log in logs)
             {
                 log.Goods = goodsBll.GetGoodsById(log.GoodsId);
+                log.Goods.Category = catBll.GetCategory(log.Goods.CategoryId);
                 this.dgvSaleLog.Rows.Add(new String[]
                 {
                     TimeStamp.ConvertIntDateTime(log.CreatedAt).ToString("yyyy-MM-dd hh:mm:ss"),
                     log.Goods?.Name,
+                    log.Goods.Category.Name,
                     log.Money.ToString(),
                     log.Summary
                 });

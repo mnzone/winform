@@ -17,8 +17,11 @@ using FrmAdd = GoodsManager.Manager.FrmAdd;
 
 namespace MemberCard
 {
-    public partial class FrmMain : Form, IForm
+    public partial class FrmMain : FrmBase, IForm
     {
+        private DateTime lastTime = DateTime.Now;
+        private int timeSpanSeconds = 0;
+
         private SoundPlayer player = null;
         private String cardNo = null;
         private Models.MemberCard card = null;
@@ -97,8 +100,11 @@ namespace MemberCard
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             this.frmInfo = new FrmInfo(this.Width + 500);
             this.tsBtnSwitch_Click(this.tsBtnSwitch, null);
+
+            this.dgvSalesLog.Focus();
 
             initBll();
             initUI();
@@ -116,10 +122,10 @@ namespace MemberCard
             this.btnSearch.Enabled = false;
             this.txtKeyword.Enabled = false;
 
+            this.FindMemberCard(this.cardNo);
+
             this.cardNo = this.txtKeyword.Text.Trim();
             this.txtKeyword.Clear();
-
-            this.FindMemberCard(this.cardNo);
 
             this.btnSearch.Enabled = true;
             this.txtKeyword.Enabled = true;
@@ -127,6 +133,7 @@ namespace MemberCard
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            this.dgvSalesLog.Focus();
             AddRecord();
         }
 
@@ -140,6 +147,7 @@ namespace MemberCard
 
         private void btnGoods_Click(object sender, EventArgs e)
         {
+            this.dgvSalesLog.Focus();
             FrmSale sale = new FrmSale();
             sale.Callback = AddRecordToDataGridView;
             sale.Goods = (sender as Button).Tag as Goods;
@@ -179,8 +187,8 @@ namespace MemberCard
             }
 
             String expireDate, createdDate, balance;
-            expireDate = createdDate = balance = "未激活";
-            if (this.card.Record.Status == Status.Disabled)
+            //expireDate = createdDate = balance = "未激活";
+            if (this.card.Record == null || this.card.Record.Status == Status.Disabled)
             {
                 expireDate = createdDate = balance = "已回收";
             }
@@ -334,6 +342,12 @@ namespace MemberCard
             this.numValue.Enabled = true;
             this.numValue.Maximum = this.card.Record.Balance;
             this.numValue.Value = this.numValue.Value > this.numValue.Maximum ? this.numValue.Maximum : this.numValue.Value;
+
+            if( ! this.timer.Enabled)
+            {
+                this.timer.Interval = 1000 * 20;
+                this.timer.Start();
+            }
         }
 
         private void AddRecordToDataGridView(String text)
@@ -387,6 +401,7 @@ namespace MemberCard
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            this.dgvSalesLog.Focus();
             int size = Convert.ToInt32(this.goodses.Count / pageSize);
 
             if (pageIndex >= size)
@@ -401,6 +416,7 @@ namespace MemberCard
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
+            this.dgvSalesLog.Focus();
             if (pageIndex <= 0)
             {
                 MessageBox.Show("已经是第一页了", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -412,7 +428,8 @@ namespace MemberCard
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            this.txtKeyword.Focus();
+            this.timer.Stop();
+            this.initUI();
         }
 
         private void tsBtnPostponed_Click(object sender, EventArgs e)
@@ -485,6 +502,38 @@ namespace MemberCard
         {
             FrmSaleLog frmLog = new FrmSaleLog();
             frmLog.ShowDialog();
+        }
+
+        private void FrmMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Console.WriteLine((int)e.KeyChar);
+            if ((DateTime.Now - lastTime).Seconds > timeSpanSeconds)
+            {
+                cardNo = "";
+            }
+
+            lastTime = DateTime.Now;
+            if (isKeyword(e.KeyChar))
+            {
+                if (e.KeyChar == 13)
+                {
+                    this.btnSearch_Click(this.btnSearch, null); cardNo = "";
+                }
+                //else if (e.KeyChar == )
+                {
+                    //gboxInput
+                }
+                return;
+            }
+            cardNo += e.KeyChar.ToString();
+        }
+
+        private void FrmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                this.gboxInput.Visible = !this.gboxInput.Visible;
+            }
         }
     }
 }

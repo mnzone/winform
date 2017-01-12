@@ -14,8 +14,12 @@ using Tools;
 
 namespace MemberCard.Card
 {
-    public partial class FrmPostponed : Form
+    public partial class FrmPostponed : FrmBase
     {
+
+        private String cardNo;
+        private DateTime lastTime = DateTime.Now;
+        private int timeSpanSeconds = 0;
 
         private Models.MemberCard card;
         private IMemberCardRecordBLL recordBll = null;
@@ -40,11 +44,6 @@ namespace MemberCard.Card
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (this.card == null || this.card.Record == null)
@@ -61,14 +60,6 @@ namespace MemberCard.Card
 
             MessageBox.Show(msg, "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.btnSubmit.Enabled = false;
-        }
-
-        private void txtKeyword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyValue == 13)
-            {
-                findCard(this.txtKeyword.Text.Trim());
-            }
         }
 
         private void findCard(String no)
@@ -98,6 +89,9 @@ namespace MemberCard.Card
 
             this.labExpireDate.Text = TimeStamp.ConvertIntDateTime(this.card.Record.ExpiredAt).ToString("yyyy-MM-dd");
             this.btnSubmit.Enabled = true;
+
+            this.labValidTime.Visible = false;
+            this.validTime.Visible = true;
         }
 
         private void initBll()
@@ -109,8 +103,33 @@ namespace MemberCard.Card
 
         private void FrmPostponed_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
+            this.btnSubmit.Focus();
+
+            this.labValidTime.Visible = true;
+            this.validTime.Visible = false;
             this.btnSubmit.Enabled = false;
             initBll();
+        }
+
+        private void FrmPostponed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((DateTime.Now - lastTime).Seconds > timeSpanSeconds)
+            {
+                cardNo = "";
+            }
+
+            lastTime = DateTime.Now;
+            if (isKeyword(e.KeyChar))
+            {
+                if (e.KeyChar == 13)
+                {
+                    findCard(cardNo);
+                    cardNo = "";
+                }
+                return;
+            }
+            cardNo += e.KeyChar.ToString();
         }
     }
 }

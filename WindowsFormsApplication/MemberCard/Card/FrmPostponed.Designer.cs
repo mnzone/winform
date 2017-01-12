@@ -30,35 +30,53 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labValidTime = new System.Windows.Forms.Label();
+            this.labMemberNo = new System.Windows.Forms.Label();
             this.validTime = new System.Windows.Forms.DateTimePicker();
             this.labExpireDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.timerFouce = new System.Windows.Forms.Timer(this.components);
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labValidTime);
+            this.groupBox1.Controls.Add(this.labMemberNo);
             this.groupBox1.Controls.Add(this.validTime);
             this.groupBox1.Controls.Add(this.labExpireDate);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnSubmit);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtKeyword);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 235);
+            this.groupBox1.Size = new System.Drawing.Size(348, 235);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "请刷卡";
+            // 
+            // labValidTime
+            // 
+            this.labValidTime.AutoSize = true;
+            this.labValidTime.Location = new System.Drawing.Point(120, 172);
+            this.labValidTime.Name = "labValidTime";
+            this.labValidTime.Size = new System.Drawing.Size(58, 21);
+            this.labValidTime.TabIndex = 18;
+            this.labValidTime.Text = "请刷卡";
+            // 
+            // labMemberNo
+            // 
+            this.labMemberNo.AutoSize = true;
+            this.labMemberNo.Location = new System.Drawing.Point(120, 52);
+            this.labMemberNo.Name = "labMemberNo";
+            this.labMemberNo.Size = new System.Drawing.Size(58, 21);
+            this.labMemberNo.TabIndex = 17;
+            this.labMemberNo.Text = "请刷卡";
             // 
             // validTime
             // 
@@ -94,18 +112,6 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "延期至：";
             // 
-            // btnSubmit
-            // 
-            this.btnSubmit.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSubmit.Location = new System.Drawing.Point(334, 164);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(118, 36);
-            this.btnSubmit.TabIndex = 12;
-            this.btnSubmit.Text = "确认延期";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -115,44 +121,35 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "会员卡号：";
             // 
-            // txtKeyword
-            // 
-            this.txtKeyword.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtKeyword.Location = new System.Drawing.Point(124, 39);
-            this.txtKeyword.MaxLength = 10;
-            this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(328, 46);
-            this.txtKeyword.TabIndex = 5;
-            this.txtKeyword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKeyword_KeyDown);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(154, 254);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(149, 46);
-            this.btnClose.TabIndex = 25;
-            this.btnClose.Text = "关闭窗口";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // timerFouce
             // 
             this.timerFouce.Interval = 1000;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSubmit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSubmit.Location = new System.Drawing.Point(100, 250);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(149, 46);
+            this.btnSubmit.TabIndex = 12;
+            this.btnSubmit.Text = "确认延期";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // FrmPostponed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 320);
+            this.ClientSize = new System.Drawing.Size(348, 313);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSubmit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmPostponed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "会员卡延期";
             this.Load += new System.EventHandler(this.FrmPostponed_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPostponed_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -166,10 +163,10 @@
         private System.Windows.Forms.Label labExpireDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtKeyword;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Timer timerFouce;
+        private System.Windows.Forms.Label labMemberNo;
+        private System.Windows.Forms.Label labValidTime;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

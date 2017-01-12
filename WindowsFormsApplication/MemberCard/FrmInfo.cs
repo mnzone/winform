@@ -110,10 +110,26 @@ namespace MemberCard
                 return;
             }
 
+            String balance = "未找到";
+            String expire = "未找到";
+            if (card.Record != null)
+            {
+                expire = TimeStamp.ConvertIntDateTime(card.Record.ExpiredAt).ToString("yyyy-MM-dd");
+                balance = card.Record == null ? "0" : card.Record.Balance.ToString();
+
+                if (card.Record.Status == Status.Disabled)
+                {
+                    expire = "已收回";
+                }
+                else if (card.Record.ExpiredAt < TimeStamp.GetNowTimeStamp())
+                {
+                    balance = "此卡已过期";
+                }
+            }
             this.labCategory.Text = String.Format("会员类别：{0}", card.Category == null ? "未找到" : card.Category.Name);
             this.labCardNo.Text = String.Format("会员卡号：{0}", card == null ? "未找到" : card.CardNo);
-            this.labCardNum.Text = String.Format("剩余次数：{0}", card.Record == null ? 0 : card.Record.Balance);
-            this.labExpire.Text = String.Format("到期时间：{0}", card.Record == null ? "未找到" : TimeStamp.ConvertIntDateTime(card.Record.ExpiredAt).ToString("yyyy-MM-dd"));
+            this.labCardNum.Text = String.Format("剩余次数：{0}", balance);
+            this.labExpire.Text = String.Format("到期时间：{0}", expire);
             this.labStatus.Text = String.Format("{0}", status);
             this.labStatus.ForeColor = color;
             changeLoction();

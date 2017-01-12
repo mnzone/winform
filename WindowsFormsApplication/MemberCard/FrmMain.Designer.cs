@@ -31,8 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsBtnMemberCard = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnRecharge = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnPostponed = new System.Windows.Forms.ToolStripButton();
+            this.tsbReNew = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnSwitch = new System.Windows.Forms.ToolStripButton();
             this.tsBtnRecords = new System.Windows.Forms.ToolStripButton();
             this.tsBtnMemberSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnStatement = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnUpdate = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslNetworkStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -56,7 +65,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labType = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gboxInput = new System.Windows.Forms.GroupBox();
             this.ckbAuto = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbTerm = new System.Windows.Forms.ComboBox();
@@ -67,15 +76,6 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.tsBtnMemberCard = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnRecharge = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnPostponed = new System.Windows.Forms.ToolStripButton();
-            this.tsbReNew = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnSwitch = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnStatement = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnAdd = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnUpdate = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,7 +83,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValue)).BeginInit();
             this.panelStatus.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gboxInput.SuspendLayout();
             this.gpGoods.SuspendLayout();
             this.gbStepPanel.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,63 @@
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // tsBtnMemberCard
+            // 
+            this.tsBtnMemberCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnMemberCard.Image = global::MemberCard.Properties.Resources.add_card;
+            this.tsBtnMemberCard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnMemberCard.Name = "tsBtnMemberCard";
+            this.tsBtnMemberCard.Size = new System.Drawing.Size(72, 75);
+            this.tsBtnMemberCard.Text = "会员卡管理";
+            this.tsBtnMemberCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnMemberCard.Visible = false;
+            this.tsBtnMemberCard.Click += new System.EventHandler(this.tsBtnMemberCard_Click);
+            // 
+            // tsBtnRecharge
+            // 
+            this.tsBtnRecharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnRecharge.Image = global::MemberCard.Properties.Resources.member_check;
+            this.tsBtnRecharge.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnRecharge.Name = "tsBtnRecharge";
+            this.tsBtnRecharge.Size = new System.Drawing.Size(72, 75);
+            this.tsBtnRecharge.Text = "会员卡充值";
+            this.tsBtnRecharge.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnRecharge.Click += new System.EventHandler(this.tsBtnRecharge_Click);
+            // 
+            // tsBtnPostponed
+            // 
+            this.tsBtnPostponed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnPostponed.Image = global::MemberCard.Properties.Resources.manager_Train;
+            this.tsBtnPostponed.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnPostponed.Name = "tsBtnPostponed";
+            this.tsBtnPostponed.Size = new System.Drawing.Size(72, 75);
+            this.tsBtnPostponed.Text = "会员卡延期";
+            this.tsBtnPostponed.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnPostponed.Click += new System.EventHandler(this.tsBtnPostponed_Click);
+            // 
+            // tsbReNew
+            // 
+            this.tsbReNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsbReNew.Image = global::MemberCard.Properties.Resources._return;
+            this.tsbReNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReNew.Name = "tsbReNew";
+            this.tsbReNew.Size = new System.Drawing.Size(60, 75);
+            this.tsbReNew.Text = "卡片回收";
+            this.tsbReNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbReNew.Click += new System.EventHandler(this.tsbReNew_Click);
+            // 
+            // tsBtnSwitch
+            // 
+            this.tsBtnSwitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnSwitch.Image = global::MemberCard.Properties.Resources.show;
+            this.tsBtnSwitch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnSwitch.Name = "tsBtnSwitch";
+            this.tsBtnSwitch.Size = new System.Drawing.Size(84, 75);
+            this.tsBtnSwitch.Text = "显示前端信息";
+            this.tsBtnSwitch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnSwitch.Visible = false;
+            this.tsBtnSwitch.Click += new System.EventHandler(this.tsBtnSwitch_Click);
+            // 
             // tsBtnRecords
             // 
             this.tsBtnRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -130,6 +187,52 @@
             this.tsBtnMemberSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsBtnMemberSearch.Visible = false;
             this.tsBtnMemberSearch.Click += new System.EventHandler(this.tsBtnMemberSearch_Click);
+            // 
+            // tsBtnStatement
+            // 
+            this.tsBtnStatement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnStatement.Image = global::MemberCard.Properties.Resources.deliver;
+            this.tsBtnStatement.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnStatement.Name = "tsBtnStatement";
+            this.tsBtnStatement.Size = new System.Drawing.Size(60, 75);
+            this.tsBtnStatement.Text = "销售统计";
+            this.tsBtnStatement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnStatement.Click += new System.EventHandler(this.tsBtnStatement_Click);
+            // 
+            // tsBtnAdd
+            // 
+            this.tsBtnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnAdd.Image = global::MemberCard.Properties.Resources.book;
+            this.tsBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnAdd.Name = "tsBtnAdd";
+            this.tsBtnAdd.Size = new System.Drawing.Size(60, 75);
+            this.tsBtnAdd.Text = "添加商品";
+            this.tsBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnAdd.Visible = false;
+            this.tsBtnAdd.Click += new System.EventHandler(this.tsBtnAdd_Click);
+            // 
+            // tsBtnUpdate
+            // 
+            this.tsBtnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnUpdate.Image = global::MemberCard.Properties.Resources.publish;
+            this.tsBtnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnUpdate.Name = "tsBtnUpdate";
+            this.tsBtnUpdate.Size = new System.Drawing.Size(60, 75);
+            this.tsBtnUpdate.Text = "更新系统";
+            this.tsBtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnUpdate.Visible = false;
+            this.tsBtnUpdate.Click += new System.EventHandler(this.tsBtnUpdate_Click);
+            // 
+            // tsBtnExit
+            // 
+            this.tsBtnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsBtnExit.Image = global::MemberCard.Properties.Resources.exit;
+            this.tsBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnExit.Name = "tsBtnExit";
+            this.tsBtnExit.Size = new System.Drawing.Size(60, 75);
+            this.tsBtnExit.Text = "退出系统";
+            this.tsBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsBtnExit.Click += new System.EventHandler(this.tsBtnExit_Click);
             // 
             // statusStrip1
             // 
@@ -386,20 +489,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "会员卡种类：";
             // 
-            // groupBox1
+            // gboxInput
             // 
-            this.groupBox1.Controls.Add(this.ckbAuto);
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.cmbTerm);
-            this.groupBox1.Controls.Add(this.txtKeyword);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 78);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(987, 105);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "查询录入区";
+            this.gboxInput.Controls.Add(this.ckbAuto);
+            this.gboxInput.Controls.Add(this.btnSearch);
+            this.gboxInput.Controls.Add(this.cmbTerm);
+            this.gboxInput.Controls.Add(this.txtKeyword);
+            this.gboxInput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gboxInput.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.gboxInput.Location = new System.Drawing.Point(0, 78);
+            this.gboxInput.Name = "gboxInput";
+            this.gboxInput.Size = new System.Drawing.Size(987, 105);
+            this.gboxInput.TabIndex = 20;
+            this.gboxInput.TabStop = false;
+            this.gboxInput.Text = "查询录入区";
+            this.gboxInput.Visible = false;
             // 
             // ckbAuto
             // 
@@ -506,109 +610,6 @@
             this.timer.Interval = 10000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // tsBtnMemberCard
-            // 
-            this.tsBtnMemberCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnMemberCard.Image = global::MemberCard.Properties.Resources.add_card;
-            this.tsBtnMemberCard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnMemberCard.Name = "tsBtnMemberCard";
-            this.tsBtnMemberCard.Size = new System.Drawing.Size(72, 75);
-            this.tsBtnMemberCard.Text = "会员卡管理";
-            this.tsBtnMemberCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnMemberCard.Visible = false;
-            this.tsBtnMemberCard.Click += new System.EventHandler(this.tsBtnMemberCard_Click);
-            // 
-            // tsBtnRecharge
-            // 
-            this.tsBtnRecharge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnRecharge.Image = global::MemberCard.Properties.Resources.member_check;
-            this.tsBtnRecharge.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnRecharge.Name = "tsBtnRecharge";
-            this.tsBtnRecharge.Size = new System.Drawing.Size(72, 75);
-            this.tsBtnRecharge.Text = "会员卡充值";
-            this.tsBtnRecharge.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnRecharge.Click += new System.EventHandler(this.tsBtnRecharge_Click);
-            // 
-            // tsBtnPostponed
-            // 
-            this.tsBtnPostponed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnPostponed.Image = global::MemberCard.Properties.Resources.manager_Train;
-            this.tsBtnPostponed.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnPostponed.Name = "tsBtnPostponed";
-            this.tsBtnPostponed.Size = new System.Drawing.Size(72, 75);
-            this.tsBtnPostponed.Text = "会员卡延期";
-            this.tsBtnPostponed.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnPostponed.Click += new System.EventHandler(this.tsBtnPostponed_Click);
-            // 
-            // tsbReNew
-            // 
-            this.tsbReNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsbReNew.Image = global::MemberCard.Properties.Resources._return;
-            this.tsbReNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbReNew.Name = "tsbReNew";
-            this.tsbReNew.Size = new System.Drawing.Size(60, 75);
-            this.tsbReNew.Text = "卡片回收";
-            this.tsbReNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbReNew.Click += new System.EventHandler(this.tsbReNew_Click);
-            // 
-            // tsBtnSwitch
-            // 
-            this.tsBtnSwitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnSwitch.Image = global::MemberCard.Properties.Resources.show;
-            this.tsBtnSwitch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnSwitch.Name = "tsBtnSwitch";
-            this.tsBtnSwitch.Size = new System.Drawing.Size(84, 75);
-            this.tsBtnSwitch.Text = "显示前端信息";
-            this.tsBtnSwitch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnSwitch.Visible = false;
-            this.tsBtnSwitch.Click += new System.EventHandler(this.tsBtnSwitch_Click);
-            // 
-            // tsBtnStatement
-            // 
-            this.tsBtnStatement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnStatement.Image = global::MemberCard.Properties.Resources.deliver;
-            this.tsBtnStatement.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnStatement.Name = "tsBtnStatement";
-            this.tsBtnStatement.Size = new System.Drawing.Size(60, 75);
-            this.tsBtnStatement.Text = "销售统计";
-            this.tsBtnStatement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnStatement.Click += new System.EventHandler(this.tsBtnStatement_Click);
-            // 
-            // tsBtnAdd
-            // 
-            this.tsBtnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnAdd.Image = global::MemberCard.Properties.Resources.book;
-            this.tsBtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnAdd.Name = "tsBtnAdd";
-            this.tsBtnAdd.Size = new System.Drawing.Size(60, 75);
-            this.tsBtnAdd.Text = "添加商品";
-            this.tsBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnAdd.Visible = false;
-            this.tsBtnAdd.Click += new System.EventHandler(this.tsBtnAdd_Click);
-            // 
-            // tsBtnUpdate
-            // 
-            this.tsBtnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnUpdate.Image = global::MemberCard.Properties.Resources.publish;
-            this.tsBtnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnUpdate.Name = "tsBtnUpdate";
-            this.tsBtnUpdate.Size = new System.Drawing.Size(60, 75);
-            this.tsBtnUpdate.Text = "更新系统";
-            this.tsBtnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnUpdate.Visible = false;
-            this.tsBtnUpdate.Click += new System.EventHandler(this.tsBtnUpdate_Click);
-            // 
-            // tsBtnExit
-            // 
-            this.tsBtnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsBtnExit.Image = global::MemberCard.Properties.Resources.exit;
-            this.tsBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnExit.Name = "tsBtnExit";
-            this.tsBtnExit.Size = new System.Drawing.Size(60, 75);
-            this.tsBtnExit.Text = "退出系统";
-            this.tsBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsBtnExit.Click += new System.EventHandler(this.tsBtnExit_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -616,7 +617,7 @@
             this.ClientSize = new System.Drawing.Size(1261, 530);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gboxInput);
             this.Controls.Add(this.gpGoods);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -628,6 +629,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.SizeChanged += new System.EventHandler(this.FrmView_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmMain_KeyPress);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -639,8 +642,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numValue)).EndInit();
             this.panelStatus.ResumeLayout(false);
             this.panelStatus.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gboxInput.ResumeLayout(false);
+            this.gboxInput.PerformLayout();
             this.gpGoods.ResumeLayout(false);
             this.gbStepPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -683,7 +686,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labType;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gboxInput;
         private System.Windows.Forms.CheckBox ckbAuto;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cmbTerm;

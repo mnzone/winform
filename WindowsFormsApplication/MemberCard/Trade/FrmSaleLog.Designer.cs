@@ -30,6 +30,7 @@
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslabTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvStatisticsGoods = new System.Windows.Forms.DataGridView();
@@ -79,7 +80,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.toolStripStatusLabel1,
+            this.tsslabTotal});
             this.statusStrip1.Location = new System.Drawing.Point(0, 289);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(528, 22);
@@ -91,6 +93,12 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 17);
             this.toolStripStatusLabel1.Text = "总计：";
+            // 
+            // tsslabTotal
+            // 
+            this.tsslabTotal.Name = "tsslabTotal";
+            this.tsslabTotal.Size = new System.Drawing.Size(170, 17);
+            this.tsslabTotal.Text = "（总金额：0元 总数量：0件）";
             // 
             // tabControl1
             // 
@@ -489,5 +497,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateStart;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslabTotal;
     }
 }
