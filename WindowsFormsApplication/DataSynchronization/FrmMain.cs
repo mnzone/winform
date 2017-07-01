@@ -170,7 +170,13 @@ namespace DataSynchronization
             {
                 int row = SQLiteHelper.ExecuteNonQuery(masterConnString, CommandType.Text,
                     model.Command);
-                Console.WriteLine(String.Format("本地执行：{0}；结果为：{1}", model.Command, row));
+
+                String sql =
+                    String.Format(
+                        "INSERT INTO commands_results(command, result, created_at) VALUES('{0}', '{1}', '{2}')",
+                        model.Command.Replace("'", "\\\'"), "成功条数：" + row, TimeStamp.GetNowTimeStamp());
+
+                Tools.MySqlHelper.ExecuteNonQuery(Tools.MySqlHelper.ConnectionStringLocalTransaction, CommandType.Text, sql);
                 if (row > 0)
                 {
                     Console.WriteLine("MySQL执行：" + String.Format("DELETE FROM queues WHERE id = {0}", model.Id));

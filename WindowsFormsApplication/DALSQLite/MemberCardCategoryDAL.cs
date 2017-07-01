@@ -62,7 +62,25 @@ namespace DALSQLite
 
         public List<MemberCardCategory> findAll()
         {
-            throw new System.NotImplementedException();
+            List<MemberCardCategory> categories = null;
+            String sql = String.Format("SELECT * FROM members_cards_categories");
+            using (SQLiteDataReader rdr = Tools.SQLiteHelper.ExecuteReader(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql))
+            {
+                while (true)
+                {
+                    if (categories == null)
+                    {
+                        categories = new List<MemberCardCategory>();
+                    }
+                    MemberCardCategory category = fillMemberCardCategory(rdr);
+                    if (category == null)
+                    {
+                        break;
+                    }
+                    categories.Add(category);
+                }
+            }
+            return categories;
         }
 
         public List<MemberCardCategory> findByWhere(string @where)

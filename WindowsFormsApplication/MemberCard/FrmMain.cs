@@ -530,7 +530,11 @@ namespace MemberCard
 
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.ControlKey)
+            if ((Control.ModifierKeys & Keys.Control) != 0 && e.KeyCode == Keys.A && (Control.ModifierKeys & Keys.Alt) != 0)
+            {
+                Card.FrmAdd frmAdd = new Card.FrmAdd();
+                frmAdd.ShowDialog();
+            }else if (e.KeyCode == Keys.ControlKey)
             {
                 this.gboxInput.Visible = !this.gboxInput.Visible;
             }

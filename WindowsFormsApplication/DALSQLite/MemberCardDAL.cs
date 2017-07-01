@@ -16,7 +16,7 @@ namespace DALSQLite
             List<SQLiteParameter> parameters = this.fillParameters(model);
             SQLiteParameter[] param = this.ConvertSQLiteParameters(parameters);
 
-            String sql = "INSERT INTO members_cards(card_no, category_id, created_at) VALUES(@card_no, @category_id, @updated_at)";
+            String sql = "INSERT INTO members_cards(card_no, category_id, created_at) VALUES(@card_no, @category_id, @created_at)";
             int row = Tools.SQLiteHelper.ExecuteNonQuery(Tools.SQLiteHelper.ConnectionStringLocalTransaction, CommandType.Text, sql, param);
             if (row > 0)
             {
@@ -143,7 +143,7 @@ namespace DALSQLite
         private List<SQLiteParameter> fillParameters(MemberCard model)
         {
             SQLiteParameter[] parameters = {
-                new SQLiteParameter("@card_no", DbType.Int32, 11),
+                new SQLiteParameter("@card_no", DbType.String, 11),
                 new SQLiteParameter("@category_id", DbType.Int32, 10),
                 new SQLiteParameter("@created_at", DbType.Int32, 11),
                 new SQLiteParameter("@updated_at", DbType.Int32, 11),

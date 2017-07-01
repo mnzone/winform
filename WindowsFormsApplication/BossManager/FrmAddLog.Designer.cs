@@ -34,23 +34,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSummary = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtGoods = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cmbGoods = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbGoods);
             this.groupBox1.Controls.Add(this.dtpCreated);
             this.groupBox1.Controls.Add(this.txtPrice);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSummary);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtGoods);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -100,13 +100,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "交易描述";
             // 
-            // txtGoods
-            // 
-            this.txtGoods.Location = new System.Drawing.Point(73, 55);
-            this.txtGoods.Name = "txtGoods";
-            this.txtGoods.Size = new System.Drawing.Size(179, 21);
-            this.txtGoods.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -145,6 +138,14 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cmbGoods
+            // 
+            this.cmbGoods.FormattingEnabled = true;
+            this.cmbGoods.Location = new System.Drawing.Point(73, 55);
+            this.cmbGoods.Name = "cmbGoods";
+            this.cmbGoods.Size = new System.Drawing.Size(179, 20);
+            this.cmbGoods.TabIndex = 9;
+            // 
             // FrmAddLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -154,6 +155,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAddLog";
             this.Text = "添加交易数据";
+            this.Load += new System.EventHandler(this.FrmAddLog_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -168,11 +170,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSummary;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtGoods;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DateTimePicker dtpCreated;
+        private System.Windows.Forms.ComboBox cmbGoods;
     }
 }

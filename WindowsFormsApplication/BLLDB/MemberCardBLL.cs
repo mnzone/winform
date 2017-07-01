@@ -21,7 +21,7 @@ namespace BLLDB
         public bool AddMemberCard(MemberCard model)
         {
             //验证数据合法性
-            if (model.Id == 0)
+            if (model.Id != 0)
             {
                 throw new ArgumentException("会员ID必须为0");
             }
@@ -95,7 +95,10 @@ namespace BLLDB
             }
 
             MemberCard card = dal.find(model.CardNo);
-            if (model.Id != card.Id
+            if (card == null)
+            {
+                
+            }else if (model.Id != card.Id
                 && model.CardNo == card.CardNo)
             {
                 throw new ArgumentException("该会员卡号已存在，请重新输入");
